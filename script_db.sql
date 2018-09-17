@@ -57,3 +57,45 @@ create table spotify_db.track_playlist(
 );
 
 alter table spotify_db.track_playlist owner to postgres;
+
+--------------------------------------------------------------------------------
+--Table: spotify_db.artist
+
+create table spotify_db.artist(
+	artist_id varchar primary key,
+	artist_name varchar not null,
+	artist_genre varchar,
+	artist_popularity smallint not null,
+	artist_followers varchar not null
+);
+
+alter table spotify_db.artist owner to postgres;
+
+--------------------------------------------------------------------------------
+--Table: spotify_db.album
+
+create table spotify_db.album(
+	album_id varchar primary key,
+	album_name varchar not null,
+	album_genre varchar,
+	album_release_date varchar not null,
+	album_popularity smallint not null,
+	album_artist varchar not null,
+	foreign key (album_artist) references spotify_db.artist(artist_id)
+);
+
+alter table spotify_db.album owner to postgres;
+
+--------------------------------------------------------------------------------
+-- Table spotify_db.track_artist
+
+create table spotify_db.track_artist(
+	track_id varchar,
+	foreign key (track_id) references spotify_db.track(track_id),
+	artist_id varchar,
+	foreign key (artist_id) references spotify_db.artist(artist_id),
+	primary key(track_id, artist_id)
+);
+   
+alter table spotify_db.track_artist owner to postgres;
+
