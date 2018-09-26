@@ -1,28 +1,13 @@
 -- SCHEMA: spotify_db
-create schema spotify_db
-    authorization postgres;
-
---------------------------------------------------------------------------------
---Table: spotify_db.category
-create table spotify_db.category(
-    category_id varchar primary key,
-    category_name varchar not null
-);
-
-alter table spotify_db.category owner to postgres;
+create schema spotify_db;
 
 --------------------------------------------------------------------------------
 -- Table: spotify_db.playlist
 create table spotify_db.playlist(
     playlist_id varchar primary key,
     playlist_name varchar not null,
-    playlist_qty_followers int not null default 0,
-    playlist_collaborative boolean not null,
-    playlist_category varchar not null,
-    foreign key (playlist_category) references spotify_db.category (category_id)
+    playlist_collaborative boolean not null
 );
-
-alter table spotify_db.playlist owner to postgres;
 
 --------------------------------------------------------------------------------
 -- Table: spotify_db.track
@@ -43,8 +28,6 @@ create table spotify_db.track(
    track_duration int not null
 );
 
-alter table spotify_db.track owner to postgres;
-
 --------------------------------------------------------------------------------
 --Table: spotify_db.track_playlist -> Relação n-n
 
@@ -56,8 +39,6 @@ create table spotify_db.track_playlist(
     primary key(track_id, playlist_id)
 );
 
-alter table spotify_db.track_playlist owner to postgres;
-
 --------------------------------------------------------------------------------
 --Table: spotify_db.artist
 
@@ -68,8 +49,6 @@ create table spotify_db.artist(
 	artist_popularity smallint not null,
 	artist_followers varchar not null
 );
-
-alter table spotify_db.artist owner to postgres;
 
 --------------------------------------------------------------------------------
 --Table: spotify_db.album
@@ -84,8 +63,6 @@ create table spotify_db.album(
 	foreign key (album_artist) references spotify_db.artist(artist_id)
 );
 
-alter table spotify_db.album owner to postgres;
-
 --------------------------------------------------------------------------------
 -- Table spotify_db.track_artist
 
@@ -96,6 +73,5 @@ create table spotify_db.track_artist(
 	foreign key (artist_id) references spotify_db.artist(artist_id),
 	primary key(track_id, artist_id)
 );
-   
-alter table spotify_db.track_artist owner to postgres;
+
 
