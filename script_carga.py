@@ -2,6 +2,9 @@ import sys
 import spotipy
 import spotipy.util as util
 import json
+import numpy as np
+import psycopg2
+import pandas as pd
 from json.decoder import JSONDecodeError
 
 scope = 'user-library-read'
@@ -16,9 +19,17 @@ else:
 
 token = util.prompt_for_user_token(username, scope, client_id=client_id, client_secret=client_secret, redirect_uri ='http://www.google.com')
 
+#Cria as matrizes de armazenamento
+Malbum = []
+Martist = []
+Mcategory = [["party"]]
+Mplaylist = []
+Mtrack = []
+
+
 if token:
     spotifyObject = spotipy.Spotify(auth=token)
-    artistID = '69GGBxA162lTqCwzJG5jLp'
+    #artistID = '69GGBxA162lTqCwzJG5jLp'
 
     # Extrai playlist de uma categoria
     category = spotifyObject.category_playlists(category_id='party')
@@ -27,16 +38,18 @@ if token:
 
         print(playlist_index['id'])
         playlist_name = playlist_index['name']
-        playlist_followers = playlist_index['followers']['total']
+        #playlist_followers = playlist_index['followers']['total']
         # playlist_category = playlist_index['category']
-        print(playlist_name, playlist_followers)
+        print (playlist_index.keys())
 
+        print(playlist_name)#,playlist_followers)
+        Mplaylist.append([playlist_name])
         # Extrai tracks de uma  playlist
         tracks = spotifyObject.user_playlist(user = "", playlist_id=playlist_index['id'])
         track_name = tracks['tracks']['items']
         for track_index in track_name:
             print('---------TRACK---------------------')
-            print(track_index['track']['id'])
+            #print(track_index['track']['id'])
 
             # Extrai dados de uma track
             track_name = track_index['track']['name']
@@ -44,7 +57,9 @@ if token:
             track_popularity = track_index['track']['popularity']
             track_number = track_index['track']['track_number']
 
-            print(track_name, track_explicit, track_popularity, track_number)
+            #insert tracks into array
+
+            #print(track_name, track_explicit, track_popularity, track_number)
 
 
             # print(json.dumps(track_index['track'], sort_keys=True, indent=4))
@@ -58,7 +73,9 @@ if token:
             album_genre = track_album["genres"]
             album_artist = track_album['artists'][0]['name']
 
-            print(album_popularity, album_release_date, album_name, album_genre, album_artist)
+            #Append na matris album
+            Malbum.append([album_popularity, album_release_date, album_name, album_genre, album_artist])
+            #print(album_popularity, album_release_date, album_name, album_genre, album_artist)
 
 
             # Extrai informacoes de um artist_name
@@ -71,8 +88,9 @@ if token:
             else:
                 artist_genre = None
             artist_followers = artist['followers']['total']
-
-            print(artist_name, artist_popularity, artist_genre, artist_followers)
+            #Append na matrix artista
+            Martist.append([artist_name, artist_popularity, artist_genre, artist_followers])
+            #print(artist_name, artist_popularity, artist_genre, artist_followers)
 
 
             # Extrai features de uma track
@@ -87,9 +105,20 @@ if token:
                 track_instrumentalness = features_index['instrumentalness']
                 track_danceability = features_index['danceability']
                 track_duration = features_index['duration_ms']
-
-                print(track_liveness, track_speechiness, track_tempo, track_valence, track_energy, track_acousticness, track_instrumentalness, track_danceability, track_duration)
-
+                #Append na martis tracks
+                Mtrack.append([track_index,track_name, track_explicit, track_popularity, track_number,track_liveness, track_speechiness, track_tempo, track_valence, track_energy, track_acousticness, track_instrumentalness, track_danceability, track_duration])
+                #print(track_liveness, track_speechiness, track_tempo, track_valence, track_energy, track_acousticness, track_instrumentalness, track_danceability, track_duration)
+    #salva em arquivos .csv (evitar retrabalho de rede pra quando funcionar hehe)
+    df = pd.DataFrame(Malbuns)
+    df.to_csv("Album.csv")
+    df = pd.DataFrame(Martist)
+    df.to_csv("Artist.csv")
+    df = pd.DataFrame(Mcategory)
+    df.to_csv("Category.csv")
+    df = pd.DataFrame(Mplaylist)
+    df.to_csv("Playlist.csv")
+    df = pd.DataFrame(Mtrack)
+    df.to_csv("Tracks.csv")
 
 else:
     print ("Can't get token for" + username)
