@@ -58,9 +58,7 @@ create table spotify_db.album(
 	album_name varchar not null,
 	album_genre varchar,
 	album_release_date varchar not null,
-	album_popularity smallint not null,
-	album_artist varchar not null,
-	foreign key (album_artist) references spotify_db.artist(artist_id)
+	album_popularity smallint not null
 );
 
 --------------------------------------------------------------------------------
