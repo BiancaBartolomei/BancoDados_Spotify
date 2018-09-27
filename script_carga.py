@@ -3,28 +3,36 @@ import spotipy
 import spotipy.util as util
 import json
 import numpy as np
-import psycopg2
+import psycopg2 as driver
 import pandas as pd
+import spotipy.oauth2 as oauth2
 from json.decoder import JSONDecodeError
 
 scope = 'user-library-read'
 client_id = '13836d1c48c749a0837f0b50b0cfd076'
 client_secret = '381761ce55b24d01a389e9135b707379'
 
-if len(sys.argv) > 1:
-    username = sys.argv[1]
-else:
-    # print ("Usage: %s username") % (sys.argv[0],)
-    sys.exit()
+credentials = oauth2.SpotifyClientCredentials(
+        client_id=client_id,
+        client_secret=client_secret)
 
-token = util.prompt_for_user_token(username, scope, client_id=client_id, client_secret=client_secret, redirect_uri ='http://www.google.com')
+token = credentials.get_access_token()
 
 #Cria as matrizes de armazenamento
 Malbum = []
 Martist = []
-Mcategory = [["party"]]
+Mtrack_artist = []
+Mtrack_playlist = []
 Mplaylist = []
 Mtrack = []
+
+lista_id_album = []
+lista_id_artist = []
+lista_id_track = []
+lista_id_playlist = []
+lista_id_track_artist = []
+lista_id_track_playlist = []
+
 
 
 if token:
@@ -37,21 +45,24 @@ if token:
     for playlist_index in playlist_name:
 
         print(playlist_index['id'])
+        playlist_id = playlist_index['id']
         playlist_name = playlist_index['name']
-        #playlist_followers = playlist_index['followers']['total']
-        # playlist_category = playlist_index['category']
+        playlist_collaborative = playlist_index['collaborative']
         print (playlist_index.keys())
 
-        print(playlist_name)#,playlist_followers)
-        Mplaylist.append([playlist_name])
+        print(playlist_name)
+
+        if playlist_id not in lista_id_playlist:
+            lista_id_playlist.append(playlist_id)
+            Mplaylist.append((playlist_id, playlist_name,playlist_collaborative))
         # Extrai tracks de uma  playlist
         tracks = spotifyObject.user_playlist(user = "", playlist_id=playlist_index['id'])
         track_name = tracks['tracks']['items']
         for track_index in track_name:
             print('---------TRACK---------------------')
-            #print(track_index['track']['id'])
 
             # Extrai dados de uma track
+            track_id = track_index['track']['id']
             track_name = track_index['track']['name']
             track_explicit = track_index['track']['explicit']
             track_popularity = track_index['track']['popularity']
@@ -71,10 +82,12 @@ if token:
             album_release_date = track_album['release_date']
             album_name = track_album['name']
             album_genre = track_album["genres"]
-            album_artist = track_album['artists'][0]['name']
+
 
             #Append na matris album
-            Malbum.append([album_popularity, album_release_date, album_name, album_genre, album_artist])
+            if album_id not in lista_id_album:
+                Malbum.append((album_id, album_name, album_genre, album_release_date, album_popularity))
+                lista_id_album.append(album_id)
             #print(album_popularity, album_release_date, album_name, album_genre, album_artist)
 
 
@@ -89,7 +102,9 @@ if token:
                 artist_genre = None
             artist_followers = artist['followers']['total']
             #Append na matrix artista
-            Martist.append([artist_name, artist_popularity, artist_genre, artist_followers])
+            if artist_id not in lista_id_artist:
+                Martist.append((artist_id, artist_name, artist_genre, artist_popularity,artist_followers))
+                lista_id_artist.append(artist_id)
             #print(artist_name, artist_popularity, artist_genre, artist_followers)
 
 
@@ -105,20 +120,47 @@ if token:
                 track_instrumentalness = features_index['instrumentalness']
                 track_danceability = features_index['danceability']
                 track_duration = features_index['duration_ms']
-                #Append na martis tracks
-                Mtrack.append([track_index,track_name, track_explicit, track_popularity, track_number,track_liveness, track_speechiness, track_tempo, track_valence, track_energy, track_acousticness, track_instrumentalness, track_danceability, track_duration])
+
+                #Append na matriz track_artists
+                if (track_id, artist_id) not in lista_id_track_artist:
+                    Mtrack_artist.append((track_id, artist_id))
+                    lista_id_track_artist.append((track_id, artist_id))
+
+                #Append na matriz track_playlist
+                if (track_id, playlist_id) not in lista_id_track_playlist:
+                    Mtrack_playlist.append((track_id, playlist_id))
+                    lista_id_track_playlist.append((track_id, playlist_id))
+
+                #Append na martiz tracks
+                if track_id not in lista_id_track:
+                    Mtrack.append((track_id,track_name,track_liveness, track_speechiness, track_explicit, track_tempo,
+                               track_valence, track_popularity, track_number, track_energy, track_acousticness,
+                               track_instrumentalness, track_danceability, track_duration))
+                    lista_id_track.append(track_id)
                 #print(track_liveness, track_speechiness, track_tempo, track_valence, track_energy, track_acousticness, track_instrumentalness, track_danceability, track_duration)
-    #salva em arquivos .csv (evitar retrabalho de rede pra quando funcionar hehe)
-    df = pd.DataFrame(Malbuns)
-    df.to_csv("Album.csv")
-    df = pd.DataFrame(Martist)
-    df.to_csv("Artist.csv")
-    df = pd.DataFrame(Mcategory)
-    df.to_csv("Category.csv")
-    df = pd.DataFrame(Mplaylist)
-    df.to_csv("Playlist.csv")
-    df = pd.DataFrame(Mtrack)
-    df.to_csv("Tracks.csv")
+
 
 else:
-    print ("Can't get token for" + username)
+    print ("Can't get token")
+
+con = driver.connect(host='localhost', database='spotify_db_26_09',
+                             user='postgres', password='19972015')
+cur = con.cursor()
+
+for item in Mplaylist:
+    cur.execute('insert into spotify_db.playlist values (%s, %s,%s)', item)
+for item in Mtrack:
+    cur.execute('insert into spotify_db.track values (%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', item)
+for item in Martist:
+    cur.execute('insert into spotify_db.artist values (%s, %s,%s,%s,%s)', item)
+for item in Malbum:
+    cur.execute('insert into spotify_db.album values (%s, %s,%s,%s, %s)', item)
+for item in Mtrack_artist:
+    cur.execute('insert into spotify_db.track_artist values (%s, %s)', item)
+for item in Mtrack_playlist:
+    cur.execute('insert into spotify_db.track_playlist values (%s, %s)', item)
+
+con.commit()
+
+cur.close()
+con.close()
