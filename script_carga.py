@@ -144,7 +144,7 @@ else:
     print ("Can't get token")
 
 con = driver.connect(host='localhost', database='spotify_db_26_09',
-                             user='postgres', password='19972015')
+                             user='', password='')
 cur = con.cursor()
 
 for item in Mplaylist:
