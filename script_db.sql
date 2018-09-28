@@ -56,7 +56,6 @@ create table spotify_db.artist(
 create table spotify_db.album(
 	album_id varchar primary key,
 	album_name varchar not null,
-	album_genre varchar,
 	album_release_date varchar not null,
 	album_popularity smallint not null
 );
@@ -72,4 +71,13 @@ create table spotify_db.track_artist(
 	primary key(track_id, artist_id)
 );
 
+--------------------------------------------------------------------------------
+-- Table spotify_db.track_artist
 
+create table spotify_db.track_album(
+	track_id varchar,
+	foreign key (track_id) references spotify_db.track(track_id),
+	album_id varchar,
+	foreign key (album_id) references spotify_db.album(album_id),
+	primary key(track_id, album_id)
+);
