@@ -109,7 +109,6 @@ if token:
             track_number = track_index['track']['track_number']
 
 
-
             # Extrai informacoes de um album
             album_id = track_index['track']['album']['id']
 
@@ -186,8 +185,6 @@ if token:
                                        track_acousticness,track_instrumentalness, track_danceability, track_duration)
 else:
     print ("Can't get token")
-
-########################################################################################################################
 
 # Percorre as listas de tupla e insere as tuplas no banco pelo drive de conexao
 for item in Mplaylist:
