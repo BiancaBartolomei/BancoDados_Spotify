@@ -99,3 +99,24 @@ $$ language plpgsql;
 
 create trigger trigger_album_acustico_popularidade after insert or update or delete on spotify_db.track
 for each statement execute procedure  spotify_db.album_acustico_popularidade();
+
+------------------------------------------------------------------------------------------------------------------------
+-- Distribuicao de artistas por genero
+
+create or replace function spotify_db.artistas_por_genero_view()
+returns trigger as $$
+begin
+execute
+'create or replace view spotify_db.artistas_por_genero
+as select count(a.artist_name) as quant, a.artist_genre
+from spotify_db.artist a
+where a.artist_genre is not null
+group by a.artist_genre order by quant desc';
+return new;
+end;
+$$ language plpgsql;
+
+create trigger atualiza_artistas_por_genero
+after insert or update or delete on spotify_db.artist
+for each statement execute
+procedure spotify_db.artistas_por_genero_view()
