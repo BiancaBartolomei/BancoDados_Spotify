@@ -38,7 +38,7 @@ lista_id_track_album = []
 ########################################################################################################################
 
 # Conexao com o banco de dados por meio do driver de conexao psycopg2
-con = driver.connect(host='localhost', database='spotify', user='postgres', password='19972015')
+con = driver.connect(host='', database='', user='', password='')
 cur = con.cursor()
 
 ########################################################################################################################
