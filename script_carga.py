@@ -38,7 +38,7 @@ lista_id_track_album = []
 ########################################################################################################################
 
 # Conexao com o banco de dados por meio do driver de conexao psycopg2
-con = driver.connect(host='', database='', user='', password='')
+con = driver.connect(host='localhost', database='spotify', user='postgres', password='19972015')
 cur = con.cursor()
 
 ########################################################################################################################
@@ -78,11 +78,11 @@ if token:
     spotifyObject = spotipy.Spotify(auth=token)
 
     # Extrai playlists de uma categoria especifica
-    category = spotifyObject.category_playlists(category_id='kpop')
+    category = spotifyObject.category_playlists(category_id='rock')
     playlist_name = category['playlists']['items']
 
-
     for playlist_index in playlist_name:
+    # for playlist_index in playlist_name[:2]:
         playlist_id = playlist_index['id']
         playlist_name = playlist_index['name']
         playlist_collaborative = playlist_index['collaborative']
@@ -90,8 +90,8 @@ if token:
         print("PLAYLIST: " + playlist_name)
 
         # Insere a playlist na lista de tuplas
-        if playlist_id not in lista_id_playlist:
-            lista_id_playlist.append(playlist_id)
+        if (playlist_id,) not in lista_id_playlist:
+            lista_id_playlist.append((playlist_id,))
             Mplaylist.append((playlist_id, playlist_name,playlist_collaborative))
 
         # Extrai tracks de uma  playlist
@@ -121,9 +121,9 @@ if token:
 
 
             # Insere album na lista de tuplas
-            if album_id not in lista_id_album:
+            if (album_id,) not in lista_id_album:
                 Malbum.append((album_id, album_name, album_release_date, album_popularity))
-                lista_id_album.append(album_id)
+                lista_id_album.append((album_id,))
                 print(album_id, album_name, album_release_date, album_popularity)
 
             # Extrai informacoes de um artist_name
@@ -138,9 +138,9 @@ if token:
             artist_followers = artist['followers']['total']
 
             # Insere artista na lista de tuplas
-            if artist_id not in lista_id_artist:
+            if (artist_id,) not in lista_id_artist:
                 Martist.append((artist_id, artist_name, artist_genre, artist_popularity,artist_followers))
-                lista_id_artist.append(artist_id)
+                lista_id_artist.append((artist_id,))
                 print(artist_id, artist_name, artist_popularity, artist_genre, artist_followers)
 
 
@@ -175,11 +175,11 @@ if token:
                         lista_id_track_album.append((track_id, album_id))
 
                     # Insere track na lista de tuplas
-                    if track_id not in lista_id_track:
+                    if (track_id,) not in lista_id_track:
                         Mtrack.append((track_id,track_name,track_liveness, track_speechiness, track_explicit,
                                        track_tempo,track_valence, track_popularity, track_number, track_energy,
                                        track_acousticness,track_instrumentalness, track_danceability, track_duration))
-                        lista_id_track.append(track_id)
+                        lista_id_track.append((track_id,))
                         print(track_id,track_name,track_liveness, track_speechiness, track_explicit,
                                        track_tempo,track_valence, track_popularity, track_number, track_energy,
                                        track_acousticness,track_instrumentalness, track_danceability, track_duration)
