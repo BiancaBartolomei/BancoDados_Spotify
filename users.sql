@@ -1,6 +1,6 @@
 --Cria role DBA e o usuário
-create role DBA with superuser password 'senha'
-create user DBA1 with password 'DBA1' in role DBA
+create role DBA with superuser password 'senha';
+create user DBA1 with password 'DBA1' in role DBA;
 
 --Cria a role para uma usuário que so pode dar select nas views
 create role userview;
