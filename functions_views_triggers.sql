@@ -1,4 +1,60 @@
 ------------------------------------------------------------------------------------------------------------------------
+--Top 10 musicas por popularidade--
+create or replace function spotify_db.AttTrackPopularity() returns trigger as $$
+begin
+create or replace view top10MusicasporPopularidade as
+select t.track_name, a.artist_name, t.track_popularity 
+from spotify_db.track as t
+inner join spotify_db.track_artist using (track_id)
+inner join spotify_db.artist as a using(artist_id)
+order by track_popularity desc
+limit 10;
+return new;
+end;
+$$ language plpgsql;
+
+create trigger AttTrackPopularity after insert or delete or update on spotify_db.track
+for each statement execute procedure spotify_db.AttTrackPopularity();
+
+------------------------------------------------------------------------------------------------------------------------
+--Top 10 artistas por popularidade--
+
+create or replace function spotify_db.AttArtistPopularity() returns trigger as $$
+begin
+
+create or replace view top10ArtistasporPopularidade as
+select  artist_name, artist_popularity 
+from spotify_db.artist
+order by artist_popularity desc
+limit 10;
+return new;
+end;
+$$ language plpgsql;
+
+create trigger AttArtistPopularity after insert or delete or update on spotify_db.artist
+for each statement execute procedure spotify_db.AttArtistPopularity();
+
+
+------------------------------------------------------------------------------------------------------------------------
+--Top 10 artistas por followers--
+
+create or replace function spotify_db.AttArtistFollowers() returns trigger as $$
+begin
+
+create or replace view top10ArtistasporSeguidores as
+select  artist_name, artist_followers 
+from spotify_db.artist
+order by artist_followers desc
+limit 10;
+return new;
+end;
+$$ language plpgsql;
+
+create trigger AttArtistFollowers after insert or delete or update on spotify_db.artist
+for each statement execute procedure spotify_db.AttArtistFollowers();
+
+
+------------------------------------------------------------------------------------------------------------------------
 --Top 10 musicas mais longas do banco--
 
 create or replace function  spotify_db.top_musicas_mais_longas_view()
@@ -142,3 +198,4 @@ create trigger atualiza_top_musicas_instrumentais
 after insert or update or delete on spotify_db.track
 for each statement execute
 procedure spotify_db.top_musicas_mais_instrumentais_view()
+
