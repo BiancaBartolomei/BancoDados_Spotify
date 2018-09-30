@@ -17,7 +17,7 @@ token = credentials.get_access_token()
 
 ########################################################################################################################
 
-# Matrizes de armazenamento das tuplas que serão persistidas
+# Matrizes de armazenamento das tuplas que serao persistidas
 Malbum = []
 Martist = []
 Mtrack_artist = []
@@ -26,7 +26,7 @@ Mtrack_album = []
 Mplaylist = []
 Mtrack = []
 
-# Listas de ids das tabelas para verificação de ids já existentes no banco
+# Listas de ids das tabelas para verificacao de ids ja existentes no banco
 lista_id_album = []
 lista_id_artist = []
 lista_id_track = []
