@@ -1,6 +1,7 @@
 import spotipy
 import psycopg2 as driver
 import spotipy.oauth2 as oauth2
+import getpass
 
 ########################################################################################################################
 
@@ -41,7 +42,8 @@ lista_id_track_album = []
 host = input('Host:')
 banco_de_dados = input('Database:')
 usuario = input('User:')
-password = input('Password:')
+password = input("Password: ")
+category_name = input('Categoria: ')
 
 ########################################################################################################################
 
@@ -86,7 +88,7 @@ if token:
     spotifyObject = spotipy.Spotify(auth=token)
 
     # Extrai playlists de uma categoria especifica
-    category = spotifyObject.category_playlists(category_id='rock')
+    category = spotifyObject.category_playlists(category_id=category_name)
     playlist_name = category['playlists']['items']
 
     for playlist_index in playlist_name:
