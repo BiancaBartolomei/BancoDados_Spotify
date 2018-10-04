@@ -2,18 +2,19 @@
 --Top 10 musicas por popularidade--
 create or replace function spotify_db.AttTrackPopularity() returns trigger as $$
 begin
-create or replace view top10MusicasporPopularidade as
+execute
+'create or replace view spotify_db.top10MusicasporPopularidade as
 select t.track_name, a.artist_name, t.track_popularity 
 from spotify_db.track as t
 inner join spotify_db.track_artist using (track_id)
 inner join spotify_db.artist as a using(artist_id)
 order by track_popularity desc
-limit 10;
+limit 10';
 return new;
 end;
 $$ language plpgsql;
 
-create trigger AttTrackPopularity after insert or delete or update on spotify_db.track
+create trigger spotify_db.AttTrackPopularity after insert or delete or update on spotify_db.track
 for each statement execute procedure spotify_db.AttTrackPopularity();
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -21,17 +22,17 @@ for each statement execute procedure spotify_db.AttTrackPopularity();
 
 create or replace function spotify_db.AttArtistPopularity() returns trigger as $$
 begin
-
-create or replace view top10ArtistasporPopularidade as
+execute
+'create or replace view spotify_db.top10ArtistasporPopularidade as
 select  artist_name, artist_popularity 
 from spotify_db.artist
 order by artist_popularity desc
-limit 10;
+limit 10';
 return new;
 end;
 $$ language plpgsql;
 
-create trigger AttArtistPopularity after insert or delete or update on spotify_db.artist
+create trigger spotify_db.AttArtistPopularity after insert or delete or update on spotify_db.artist
 for each statement execute procedure spotify_db.AttArtistPopularity();
 
 
@@ -40,24 +41,24 @@ for each statement execute procedure spotify_db.AttArtistPopularity();
 
 create or replace function spotify_db.AttArtistFollowers() returns trigger as $$
 begin
-
-create or replace view top10ArtistasporSeguidores as
+execute
+'create or replace view spotify_db.top10ArtistasporSeguidores as
 select  artist_name, artist_followers 
 from spotify_db.artist
 order by artist_followers desc
-limit 10;
+limit 10';
 return new;
 end;
 $$ language plpgsql;
 
-create trigger AttArtistFollowers after insert or delete or update on spotify_db.artist
+create trigger spotify_db.AttArtistFollowers after insert or delete or update on spotify_db.artist
 for each statement execute procedure spotify_db.AttArtistFollowers();
 
 
 ------------------------------------------------------------------------------------------------------------------------
 --Top 10 musicas mais longas do banco--
 
-create or replace function  spotify_db.top_musicas_mais_longas_view()
+create or replace function spotify_db.top_musicas_mais_longas_view()
 returns trigger as $$
 begin
 execute
@@ -71,7 +72,7 @@ return new;
 end;
 $$ language plpgsql;
 
-create trigger atualiza_top_musicas_longas
+create trigger spotify_db.atualiza_top_musicas_longas
 after insert or update or delete on spotify_db.track
 for each statement execute
 procedure spotify_db.top_musicas_mais_longas_view()
@@ -96,7 +97,7 @@ return new;
 end;
 $$ language plpgsql;
 
-create trigger atualiza_top_albuns_explicit
+create trigger spotify_db.atualiza_top_albuns_explicit
 after insert or update or delete on spotify_db.track
 for each statement execute
 procedure spotify_db.top_albuns_explicit_view()
@@ -116,7 +117,7 @@ create or replace function spotify_db.artistas_dancantes() returns trigger as $$
 	end;
 	$$ language plpgsql;
 
-create trigger trigger_artistas_dancantes after insert or update or delete on spotify_db.track
+create trigger spotify_db.trigger_artistas_dancantes after insert or update or delete on spotify_db.track
 for each statement execute procedure  spotify_db.artistas_dancantes();
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -134,13 +135,13 @@ create or replace function spotify_db.albuns_energiticos() returns trigger as $$
 	end;
 $$ language plpgsql;
 
-create trigger trigger_albuns_energeticos after insert or update or delete on spotify_db.track
+create trigger spotify_db.trigger_albuns_energeticos after insert or update or delete on spotify_db.track
 for each statement execute procedure  spotify_db.albuns_energiticos();
 
 ------------------------------------------------------------------------------------------------------------------------
 -- Top 10 albuns mais populares com mais de 50% acustico
 
-create or replace function spotify_db.album_acustico_popularidade() returns trigger as $$
+create or replace spotify_db.function spotify_db.album_acustico_popularidade() returns trigger as $$
 	begin
 		execute 'create or replace view spotify_db.album_acustico_popularidade_view as select distinct (a.album_name), t.track_popularity
 			from spotify_db.track t join spotify_db.track_album q on t.track_id = q.track_id
@@ -153,7 +154,7 @@ create or replace function spotify_db.album_acustico_popularidade() returns trig
 $$ language plpgsql;
 
 
-create trigger trigger_album_acustico_popularidade after insert or update or delete on spotify_db.track
+create trigger spotify_db.trigger_album_acustico_popularidade after insert or update or delete on spotify_db.track
 for each statement execute procedure  spotify_db.album_acustico_popularidade();
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -172,7 +173,7 @@ return new;
 end;
 $$ language plpgsql;
 
-create trigger atualiza_artistas_por_genero
+create trigger spotify_db.atualiza_artistas_por_genero
 after insert or update or delete on spotify_db.artist
 for each statement execute
 procedure spotify_db.artistas_por_genero_view()
@@ -194,7 +195,7 @@ return new;
 end;
 $$ language plpgsql;
 
-create trigger atualiza_top_musicas_instrumentais
+create trigger spotify_db.atualiza_top_musicas_instrumentais
 after insert or update or delete on spotify_db.track
 for each statement execute
 procedure spotify_db.top_musicas_mais_instrumentais_view()
