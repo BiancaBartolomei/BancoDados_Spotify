@@ -29,7 +29,7 @@ create table spotify_db.track(
 );
 
 --------------------------------------------------------------------------------
---Table: spotify_db.track_playlist -> Relação n-n
+--Table: spotify_db.track_playlist
 
 create table spotify_db.track_playlist(
     track_id varchar,
