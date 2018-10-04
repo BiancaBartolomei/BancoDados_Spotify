@@ -221,4 +221,4 @@ grant select on spotify_db.musicas_instrumentais to usuario_view;
 create role usuario_dba with superuser password 'senha';
 create user usuario_dba_1 with password 'senha' in role usuario_dba;
 alter user usuario_dba_1 with superuser;
-alter database spotify owner to usuario_dba_1;
+alter database spotify_db owner to usuario_dba_1;
