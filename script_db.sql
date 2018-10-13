@@ -37,7 +37,7 @@ create table spotify_db.track_popularity(
   track_popularity smallint not null,
   primary key(track_id, data_popularidade)
 
-)
+);
 
 --------------------------------------------------------------------------------
 --Table: spotify_db.track_playlist
@@ -154,7 +154,7 @@ select  distinct a.album_name, t.track_energy
 
 ---------------------------------------------------------------------------------------------------------------
 --Top 10 albuns acusticos mais populares
-create or replace view spotify_db.album_acustico_popularidade_view as select distinct (a.album_name), t.track_popularity
+create or replace view spotify_db.album_acustico_popularidade_view as select distinct (a.album_name), p.track_popularity
 			from spotify_db.track t join spotify_db.track_album q on t.track_id = q.track_id
 			join spotify_db.album a on a.album_id = q.album_id
 			join spotify_db.track_popularity p on t.track_id = p.track_id

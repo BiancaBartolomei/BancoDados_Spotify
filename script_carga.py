@@ -1,7 +1,7 @@
 import spotipy
 import psycopg2 as driver
 import spotipy.oauth2 as oauth2
-import getpass
+import datetime as dt
 
 ########################################################################################################################
 
@@ -26,6 +26,7 @@ Mtrack_playlist = []
 Mtrack_album = []
 Mplaylist = []
 Mtrack = []
+Mtrack_popularity = []
 
 # Listas de ids das tabelas para verificacao de ids ja existentes no banco
 lista_id_album = []
@@ -84,6 +85,9 @@ lista_id_track_album = cur.fetchall()
 
 ########################################################################################################################
 # Obtencao de dados pelas API e tratamento dos mesmos
+
+data = dt.datetime.today()
+
 if token:
     spotifyObject = spotipy.Spotify(auth=token)
 
@@ -119,6 +123,7 @@ if token:
                 track_popularity = track_index['track']['popularity']
                 track_number = track_index['track']['track_number']
 
+                Mtrack_popularity.append((track_id, data, track_popularity))
 
                 # Extrai informacoes de um album
                 album_id = track_index['track']['album']['id']
@@ -186,14 +191,14 @@ if token:
                             lista_id_track_album.append((track_id, album_id))
 
                         # Insere track na lista de tuplas
-                        # if (track_id,) not in lista_id_track:
-                        Mtrack.append((track_id,track_name,track_liveness, track_speechiness, track_explicit,
-                                       track_tempo,track_valence, track_popularity, track_number, track_energy,
-                                       track_acousticness,track_instrumentalness, track_danceability, track_duration))
-                        # lista_id_track.append((track_id,))
-                        print(track_id,track_name,track_liveness, track_speechiness, track_explicit,
-                                       track_tempo,track_valence, track_popularity, track_number, track_energy,
-                                       track_acousticness,track_instrumentalness, track_danceability, track_duration)
+                        if (track_id,) not in lista_id_track:
+                            Mtrack.append((track_id,track_name,track_liveness, track_speechiness, track_explicit,
+                                           track_tempo,track_valence, track_number, track_energy,
+                                           track_acousticness,track_instrumentalness, track_danceability, track_duration))
+                            lista_id_track.append((track_id,))
+                            print(track_id,track_name,track_liveness, track_speechiness, track_explicit,
+                                           track_tempo,track_valence, track_number, track_energy,
+                                           track_acousticness,track_instrumentalness, track_danceability, track_duration)
 else:
     print ("Can't get token")
 
@@ -201,11 +206,7 @@ else:
 for item in Mplaylist:
     cur.execute('insert into spotify_db.playlist values (%s, %s,%s, %s)', item)
 for item in Mtrack:
-    if (item[0],) not in lista_id_track:
-        cur.execute('insert into spotify_db.track values (%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', item)
-        lista_id_track.append((item[0],))
-    else:
-        cur.execute('update spotify_db.track set track_popularity = %s where track_id = %s', (item[0],item[7]))
+    cur.execute('insert into spotify_db.track values (%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s)', item)
 for item in Martist:
     cur.execute('insert into spotify_db.artist values (%s, %s,%s,%s,%s)', item)
 for item in Malbum:
@@ -216,6 +217,8 @@ for item in Mtrack_playlist:
     cur.execute('insert into spotify_db.track_playlist values (%s, %s)', item)
 for item in Mtrack_album:
     cur.execute('insert into spotify_db.track_album values (%s, %s)', item)
+for item in Mtrack_popularity:
+    cur.execute('insert into spotify_db.track_popularity values (%s, %s, %s)', item)
 
 con.commit()
 
