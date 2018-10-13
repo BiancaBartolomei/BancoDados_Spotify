@@ -6,7 +6,8 @@ create schema spotify_db;
 create table spotify_db.playlist(
     playlist_id varchar primary key,
     playlist_name varchar not null,
-    playlist_collaborative boolean not null
+    playlist_collaborative boolean not null,
+    playlist_category varchar not null
 );
 
 --------------------------------------------------------------------------------
