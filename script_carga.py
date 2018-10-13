@@ -91,8 +91,8 @@ if token:
     category = spotifyObject.category_playlists(category_id=category_name)
     playlist_name = category['playlists']['items']
 
-    for playlist_index in playlist_name:
-    # for playlist_index in playlist_name[:2]:
+    # for playlist_index in playlist_name:
+    for playlist_index in playlist_name[:2]:
         playlist_id = playlist_index['id']
         playlist_name = playlist_index['name']
         playlist_collaborative = playlist_index['collaborative']
@@ -102,7 +102,7 @@ if token:
         # Insere a playlist na lista de tuplas
         if (playlist_id,) not in lista_id_playlist:
             lista_id_playlist.append((playlist_id,))
-            Mplaylist.append((playlist_id, playlist_name,playlist_collaborative))
+            Mplaylist.append((playlist_id, playlist_name,playlist_collaborative, category_name))
 
         # Extrai tracks de uma  playlist
         tracks = spotifyObject.user_playlist(user = "", playlist_id=playlist_index['id'])
@@ -186,22 +186,26 @@ if token:
                             lista_id_track_album.append((track_id, album_id))
 
                         # Insere track na lista de tuplas
-                        if (track_id,) not in lista_id_track:
-                            Mtrack.append((track_id,track_name,track_liveness, track_speechiness, track_explicit,
-                                           track_tempo,track_valence, track_popularity, track_number, track_energy,
-                                           track_acousticness,track_instrumentalness, track_danceability, track_duration))
-                            lista_id_track.append((track_id,))
-                            print(track_id,track_name,track_liveness, track_speechiness, track_explicit,
-                                           track_tempo,track_valence, track_popularity, track_number, track_energy,
-                                           track_acousticness,track_instrumentalness, track_danceability, track_duration)
+                        # if (track_id,) not in lista_id_track:
+                        Mtrack.append((track_id,track_name,track_liveness, track_speechiness, track_explicit,
+                                       track_tempo,track_valence, track_popularity, track_number, track_energy,
+                                       track_acousticness,track_instrumentalness, track_danceability, track_duration))
+                        # lista_id_track.append((track_id,))
+                        print(track_id,track_name,track_liveness, track_speechiness, track_explicit,
+                                       track_tempo,track_valence, track_popularity, track_number, track_energy,
+                                       track_acousticness,track_instrumentalness, track_danceability, track_duration)
 else:
     print ("Can't get token")
 
 # Percorre as listas de tupla e insere as tuplas no banco pelo drive de conexao
 for item in Mplaylist:
-    cur.execute('insert into spotify_db.playlist values (%s, %s,%s)', item)
+    cur.execute('insert into spotify_db.playlist values (%s, %s,%s, %s)', item)
 for item in Mtrack:
-    cur.execute('insert into spotify_db.track values (%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', item)
+    if (item[0],) not in lista_id_track:
+        cur.execute('insert into spotify_db.track values (%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', item)
+        lista_id_track.append((item[0],))
+    else:
+        cur.execute('update spotify_db.track set track_popularity = %s where track_id = %s', (item[0],item[7]))
 for item in Martist:
     cur.execute('insert into spotify_db.artist values (%s, %s,%s,%s,%s)', item)
 for item in Malbum:
