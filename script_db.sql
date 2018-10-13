@@ -19,7 +19,6 @@ create table spotify_db.track(
    track_explicit boolean not null,
    track_tempo double precision not null,
    track_valence double precision not null,
-   track_popularity smallint not null,
    track_number int not null,
    track_energy double precision not null,
    track_acousticness double precision not null,
@@ -27,6 +26,17 @@ create table spotify_db.track(
    track_dancebility double precision not null,
    track_duration int not null
 );
+
+--------------------------------------------------------------------------------
+--Table: spotify_db.track_popularity
+create table spotify_db.track_popularity(
+  track_id varchar,
+  foreign key (track_id) references spotify_db.track(track_id),
+  data_popularidade date,
+  track_popularity smallint not null,
+  primary key(track_id, data_popularidade)
+
+)
 
 --------------------------------------------------------------------------------
 --Table: spotify_db.track_playlist
@@ -86,10 +96,11 @@ create table spotify_db.track_album(
 ---------------------------------------------------------------------------------------------------------------
 -- Top 10 musicas por popularidade
 create or replace view spotify_db.top10MusicasporPopularidade as
-select t.track_name, a.artist_name, t.track_popularity
+select t.track_name, a.artist_name, p.track_popularity
 from spotify_db.track as t
 inner join spotify_db.track_artist using (track_id)
 inner join spotify_db.artist as a using(artist_id)
+inner join spotify_db.track_popularity as p using (track_id)
 order by track_popularity desc
 limit 10;
 
@@ -145,8 +156,9 @@ select  distinct a.album_name, t.track_energy
 create or replace view spotify_db.album_acustico_popularidade_view as select distinct (a.album_name), t.track_popularity
 			from spotify_db.track t join spotify_db.track_album q on t.track_id = q.track_id
 			join spotify_db.album a on a.album_id = q.album_id
+			join spotify_db.track_popularity p on t.track_id = p.track_id
 			where t.track_acousticness > 0.5
-			order by t.track_popularity desc
+			order by p.track_popularity desc
 			limit 10;
 
 ---------------------------------------------------------------------------------------------------------------
