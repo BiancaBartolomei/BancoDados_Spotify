@@ -33,7 +33,7 @@ create table spotify_db.track(
 create table spotify_db.track_popularity(
   track_id varchar,
   foreign key (track_id) references spotify_db.track(track_id),
-  data_popularidade date,
+  data_popularidade timestamp,
   track_popularity smallint not null,
   primary key(track_id, data_popularidade)
 
