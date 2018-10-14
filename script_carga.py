@@ -36,7 +36,7 @@ lista_id_playlist = []
 lista_id_track_artist = []
 lista_id_track_playlist = []
 lista_id_track_album = []
-
+lista_id_track_popularity = []
 ########################################################################################################################
 
 # Entradas do usuario para conexao com o banco
@@ -86,8 +86,6 @@ lista_id_track_album = cur.fetchall()
 ########################################################################################################################
 # Obtencao de dados pelas API e tratamento dos mesmos
 
-data = dt.datetime.today()
-
 if token:
     spotifyObject = spotipy.Spotify(auth=token)
 
@@ -123,7 +121,9 @@ if token:
                 track_popularity = track_index['track']['popularity']
                 track_number = track_index['track']['track_number']
 
-                Mtrack_popularity.append((track_id, data, track_popularity))
+                if (track_id, track_popularity) not in lista_id_track_popularity:
+                    lista_id_track_popularity.append((track_id, track_popularity))
+                    Mtrack_popularity.append((track_id, dt.datetime.today(), track_popularity))
 
                 # Extrai informacoes de um album
                 album_id = track_index['track']['album']['id']
