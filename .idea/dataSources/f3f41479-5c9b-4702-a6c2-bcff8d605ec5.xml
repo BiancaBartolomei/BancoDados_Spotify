@@ -1,0 +1,1810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="spotify_db_02_10@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.11">
+    <root id="1">
+      <ServerVersion>10.5</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="aula_15">
+      <ObjectId>17926</ObjectId>
+      <Owner>luismalta</Owner>
+    </database>
+    <database id="3" parent="1" name="db1">
+      <ObjectId>16595</ObjectId>
+      <Owner>luismalta</Owner>
+    </database>
+    <database id="4" parent="1" name="ex1">
+      <ObjectId>16494</ObjectId>
+      <Owner>luismalta</Owner>
+    </database>
+    <database id="5" parent="1" name="logradouro">
+      <ObjectId>16998</ObjectId>
+      <Owner>luismalta</Owner>
+    </database>
+    <database id="6" parent="1" name="luismalta">
+      <ObjectId>16484</ObjectId>
+      <Owner>luismalta</Owner>
+    </database>
+    <database id="7" parent="1" name="postgres">
+      <ObjectId>13057</ObjectId>
+      <Comment>default administrative connection database</Comment>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="8" parent="1" name="spotify_db_02_10">
+      <ObjectId>18021</ObjectId>
+      <Owner>luismalta</Owner>
+      <IntrospectionStateNumber>115</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="9" parent="1" name="spotify_db_03_10">
+      <ObjectId>18120</ObjectId>
+      <Owner>luismalta</Owner>
+      <IntrospectionStateNumber>115</IntrospectionStateNumber>
+      <Visible>1</Visible>
+    </database>
+    <database id="10" parent="1" name="spotify_db_28_09">
+      <ObjectId>17577</ObjectId>
+      <Owner>luismalta</Owner>
+    </database>
+    <database id="11" parent="1" name="venda_mvc">
+      <ObjectId>17281</ObjectId>
+      <Owner>luismalta</Owner>
+    </database>
+    <role id="12" parent="1" name="dba">
+      <ObjectId>18208</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="13" parent="1" name="dba1">
+      <ObjectId>18209</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="14" parent="1" name="luismalta">
+      <ObjectId>16483</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="15" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="16" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="17" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="18" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="19" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="20" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <role id="21" parent="1" name="super">
+      <ObjectId>16593</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="22" parent="1" name="teste">
+      <ObjectId>16619</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="23" parent="1" name="user1">
+      <ObjectId>16620</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="24" parent="1" name="user3">
+      <ObjectId>16617</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="25" parent="1" name="user4">
+      <ObjectId>16618</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="26" parent="1" name="user5">
+      <ObjectId>16627</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="27" parent="1" name="vendedor1">
+      <ObjectId>16626</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="28" parent="1" name="vendedores_mexico">
+      <ObjectId>16621</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <schema id="29" parent="8" name="information_schema">
+      <ObjectId>12766</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="30" parent="8" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="31" parent="8" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="32" parent="8" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="33" parent="8" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="34" parent="8" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <Owner>postgres</Owner>
+      <IntrospectionTimestamp>2018-10-03.22:56:56.145</IntrospectionTimestamp>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="35" parent="8" name="spotify_db">
+      <ObjectId>18022</ObjectId>
+      <Owner>luismalta</Owner>
+      <IntrospectionTimestamp>2018-10-03.22:56:56.145</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1116</IntrospectionStateNumber>
+      <Visible>1</Visible>
+    </schema>
+    <access-method id="36" parent="8" name="btree">
+      <ObjectId>403</ObjectId>
+      <Comment>b-tree index access method</Comment>
+      <Handler>pg_catalog.bthandler</Handler>
+      <HandlerId>330</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="37" parent="8" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
+      <Handler>pg_catalog.hashhandler</Handler>
+      <HandlerId>331</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="38" parent="8" name="gist">
+      <ObjectId>783</ObjectId>
+      <Comment>GiST index access method</Comment>
+      <Handler>pg_catalog.gisthandler</Handler>
+      <HandlerId>332</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="39" parent="8" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
+      <Handler>pg_catalog.ginhandler</Handler>
+      <HandlerId>333</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="40" parent="8" name="spgist">
+      <ObjectId>4000</ObjectId>
+      <Comment>SP-GiST index access method</Comment>
+      <Handler>pg_catalog.spghandler</Handler>
+      <HandlerId>334</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="41" parent="8" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+      <Handler>pg_catalog.brinhandler</Handler>
+      <HandlerId>335</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <schema id="42" parent="9" name="information_schema">
+      <ObjectId>12766</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="43" parent="9" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="44" parent="9" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="45" parent="9" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="46" parent="9" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="47" parent="9" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <Owner>postgres</Owner>
+      <Current>1</Current>
+    </schema>
+    <schema id="48" parent="9" name="spotify_db">
+      <ObjectId>18121</ObjectId>
+      <Owner>luismalta</Owner>
+      <IntrospectionTimestamp>2018-10-03.23:18:08.731</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1177</IntrospectionStateNumber>
+      <Visible>1</Visible>
+    </schema>
+    <access-method id="49" parent="9" name="btree">
+      <ObjectId>403</ObjectId>
+      <Comment>b-tree index access method</Comment>
+      <Handler>pg_catalog.bthandler</Handler>
+      <HandlerId>330</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="50" parent="9" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
+      <Handler>pg_catalog.hashhandler</Handler>
+      <HandlerId>331</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="51" parent="9" name="gist">
+      <ObjectId>783</ObjectId>
+      <Comment>GiST index access method</Comment>
+      <Handler>pg_catalog.gisthandler</Handler>
+      <HandlerId>332</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="52" parent="9" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
+      <Handler>pg_catalog.ginhandler</Handler>
+      <HandlerId>333</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="53" parent="9" name="spgist">
+      <ObjectId>4000</ObjectId>
+      <Comment>SP-GiST index access method</Comment>
+      <Handler>pg_catalog.spghandler</Handler>
+      <HandlerId>334</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="54" parent="9" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+      <Handler>pg_catalog.brinhandler</Handler>
+      <HandlerId>335</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <table id="55" parent="35" name="album">
+      <ObjectId>18065</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1077</StateNumber>
+    </table>
+    <table id="56" parent="35" name="artist">
+      <ObjectId>18057</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1077</StateNumber>
+    </table>
+    <table id="57" parent="35" name="playlist">
+      <ObjectId>18023</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1077</StateNumber>
+    </table>
+    <table id="58" parent="35" name="track">
+      <ObjectId>18031</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1077</StateNumber>
+    </table>
+    <table id="59" parent="35" name="track_album">
+      <ObjectId>18091</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1077</StateNumber>
+    </table>
+    <table id="60" parent="35" name="track_artist">
+      <ObjectId>18073</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1077</StateNumber>
+    </table>
+    <table id="61" parent="35" name="track_playlist">
+      <ObjectId>18039</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1077</StateNumber>
+    </table>
+    <view id="62" parent="35" name="albuns_explicit">
+      <ObjectId>18261</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1116</StateNumber>
+      <SourceTextLength>576</SourceTextLength>
+    </view>
+    <view id="63" parent="35" name="musicas_longas">
+      <ObjectId>18256</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1115</StateNumber>
+      <SourceTextLength>299</SourceTextLength>
+    </view>
+    <view id="64" parent="35" name="top10artistasporpopularidade">
+      <ObjectId>18248</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1113</StateNumber>
+      <SourceTextLength>132</SourceTextLength>
+    </view>
+    <view id="65" parent="35" name="top10artistasporseguidores">
+      <ObjectId>18252</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1114</StateNumber>
+      <SourceTextLength>130</SourceTextLength>
+    </view>
+    <view id="66" parent="35" name="top10musicasporpopularidade">
+      <ObjectId>18243</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1112</StateNumber>
+      <SourceTextLength>237</SourceTextLength>
+    </view>
+    <table id="67" parent="48" name="album">
+      <ObjectId>18164</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1073</StateNumber>
+    </table>
+    <table id="68" parent="48" name="artist">
+      <ObjectId>18156</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1109</StateNumber>
+    </table>
+    <table id="69" parent="48" name="playlist">
+      <ObjectId>18122</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1069</StateNumber>
+    </table>
+    <table id="70" parent="48" name="track">
+      <ObjectId>18130</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1111</StateNumber>
+    </table>
+    <table id="71" parent="48" name="track_album">
+      <ObjectId>18190</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1073</StateNumber>
+    </table>
+    <table id="72" parent="48" name="track_artist">
+      <ObjectId>18172</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1072</StateNumber>
+    </table>
+    <table id="73" parent="48" name="track_playlist">
+      <ObjectId>18138</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1069</StateNumber>
+    </table>
+    <view id="74" parent="48" name="album_acustico_popularidade_view">
+      <ObjectId>18300</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1125</StateNumber>
+      <SourceTextLength>343</SourceTextLength>
+    </view>
+    <view id="75" parent="48" name="albuns_energeticos_view">
+      <ObjectId>18295</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1124</StateNumber>
+      <SourceTextLength>278</SourceTextLength>
+    </view>
+    <view id="76" parent="48" name="albuns_explicit">
+      <ObjectId>18266</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1122</StateNumber>
+      <SourceTextLength>576</SourceTextLength>
+    </view>
+    <view id="77" parent="48" name="artistas_dancantes_view">
+      <ObjectId>18290</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1123</StateNumber>
+      <SourceTextLength>308</SourceTextLength>
+    </view>
+    <view id="78" parent="48" name="artistas_por_genero">
+      <ObjectId>18305</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1126</StateNumber>
+      <SourceTextLength>186</SourceTextLength>
+    </view>
+    <view id="79" parent="48" name="musicas_instrumentais">
+      <ObjectId>18309</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1127</StateNumber>
+      <SourceTextLength>315</SourceTextLength>
+    </view>
+    <view id="80" parent="48" name="musicas_longas">
+      <ObjectId>18284</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1121</StateNumber>
+      <SourceTextLength>299</SourceTextLength>
+    </view>
+    <view id="81" parent="48" name="top10artistasporpopularidade">
+      <ObjectId>18276</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1119</StateNumber>
+      <SourceTextLength>132</SourceTextLength>
+    </view>
+    <view id="82" parent="48" name="top10artistasporseguidores">
+      <ObjectId>18280</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1120</StateNumber>
+      <SourceTextLength>130</SourceTextLength>
+    </view>
+    <view id="83" parent="48" name="top10musicasporpopularidade">
+      <ObjectId>18271</ObjectId>
+      <Owner>luismalta</Owner>
+      <StateNumber>1118</StateNumber>
+      <SourceTextLength>237</SourceTextLength>
+    </view>
+    <routine id="84" parent="48" name="album_acustico_popularidade">
+      <ObjectId>18237</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>384</SourceTextLength>
+      <StateNumber>1106</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="85" parent="48" name="albuns_energiticos">
+      <ObjectId>18235</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>341</SourceTextLength>
+      <StateNumber>1104</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="86" parent="48" name="artistas_dancantes">
+      <ObjectId>18233</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>369</SourceTextLength>
+      <StateNumber>1102</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="87" parent="48" name="artistas_por_genero_view">
+      <ObjectId>18239</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>247</SourceTextLength>
+      <StateNumber>1108</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="88" parent="48" name="attartistfollowers">
+      <ObjectId>18227</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>200</SourceTextLength>
+      <StateNumber>1096</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="89" parent="48" name="attartistpopularity">
+      <ObjectId>18225</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>204</SourceTextLength>
+      <StateNumber>1094</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="90" parent="48" name="atttrackpopularity">
+      <ObjectId>18222</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>325</SourceTextLength>
+      <StateNumber>1093</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="91" parent="48" name="top_albuns_explicit_view">
+      <ObjectId>18231</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>519</SourceTextLength>
+      <StateNumber>1100</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="92" parent="48" name="top_musicas_mais_instrumentais_view">
+      <ObjectId>18241</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>340</SourceTextLength>
+      <StateNumber>1110</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <routine id="93" parent="48" name="top_musicas_mais_longas_view">
+      <ObjectId>18229</ObjectId>
+      <Owner>luismalta</Owner>
+      <SourceTextLength>317</SourceTextLength>
+      <StateNumber>1098</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <ResultsDefinition>trigger</ResultsDefinition>
+      <LanguageName>plpgsql</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Cost>100.0</Cost>
+    </routine>
+    <column id="94" parent="55" name="album_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1055</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="95" parent="55" name="album_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1055</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="96" parent="55" name="album_release_date">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1055</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="97" parent="55" name="album_popularity">
+      <Position>4</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1055</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <index id="98" parent="55" name="album_pkey">
+      <ObjectId>18071</ObjectId>
+      <ColNames>album_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="99" parent="55" name="album_pkey">
+      <ObjectId>18072</ObjectId>
+      <ColNames>album_id</ColNames>
+      <UnderlyingIndexName>album_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="100" parent="56" name="artist_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1054</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="101" parent="56" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1054</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="102" parent="56" name="artist_genre">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1054</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="103" parent="56" name="artist_popularity">
+      <Position>4</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1054</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="104" parent="56" name="artist_followers">
+      <Position>5</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1054</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="105" parent="56" name="artist_pkey">
+      <ObjectId>18063</ObjectId>
+      <ColNames>artist_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="106" parent="56" name="artist_pkey">
+      <ObjectId>18064</ObjectId>
+      <ColNames>artist_id</ColNames>
+      <UnderlyingIndexName>artist_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="107" parent="57" name="playlist_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1051</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="108" parent="57" name="playlist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1051</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="109" parent="57" name="playlist_collaborative">
+      <Position>3</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1051</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <index id="110" parent="57" name="playlist_pkey">
+      <ObjectId>18029</ObjectId>
+      <ColNames>playlist_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="111" parent="57" name="playlist_pkey">
+      <ObjectId>18030</ObjectId>
+      <ColNames>playlist_id</ColNames>
+      <UnderlyingIndexName>playlist_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="112" parent="58" name="track_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="113" parent="58" name="track_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="114" parent="58" name="track_liveness">
+      <Position>3</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="115" parent="58" name="track_speechness">
+      <Position>4</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="116" parent="58" name="track_explicit">
+      <Position>5</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="117" parent="58" name="track_tempo">
+      <Position>6</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="118" parent="58" name="track_valence">
+      <Position>7</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="119" parent="58" name="track_popularity">
+      <Position>8</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="120" parent="58" name="track_number">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="121" parent="58" name="track_energy">
+      <Position>10</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="122" parent="58" name="track_acousticness">
+      <Position>11</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="123" parent="58" name="track_instrumentalness">
+      <Position>12</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="124" parent="58" name="track_dancebility">
+      <Position>13</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="125" parent="58" name="track_duration">
+      <Position>14</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1052</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="126" parent="58" name="track_pkey">
+      <ObjectId>18037</ObjectId>
+      <ColNames>track_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="127" parent="58" name="track_pkey">
+      <ObjectId>18038</ObjectId>
+      <ColNames>track_id</ColNames>
+      <UnderlyingIndexName>track_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="128" parent="59" name="track_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1057</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="129" parent="59" name="album_id">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1057</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="130" parent="59" name="track_album_pkey">
+      <ObjectId>18097</ObjectId>
+      <ColNames>track_id
+album_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="131" parent="59" name="track_album_pkey">
+      <ObjectId>18098</ObjectId>
+      <ColNames>track_id
+album_id</ColNames>
+      <UnderlyingIndexName>track_album_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="132" parent="59" name="track_album_track_id_fkey">
+      <ObjectId>18099</ObjectId>
+      <ColNames>track_id</ColNames>
+      <RefTableId>18031</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>track</RefTableName>
+      <RefKeyName>track_pkey</RefKeyName>
+      <RefColNames>track_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="133" parent="59" name="track_album_album_id_fkey">
+      <ObjectId>18104</ObjectId>
+      <ColNames>album_id</ColNames>
+      <RefTableId>18065</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>album</RefTableName>
+      <RefKeyName>album_pkey</RefKeyName>
+      <RefColNames>album_id</RefColNames>
+    </foreign-key>
+    <column id="134" parent="60" name="track_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="135" parent="60" name="artist_id">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="136" parent="60" name="track_artist_pkey">
+      <ObjectId>18079</ObjectId>
+      <ColNames>track_id
+artist_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="137" parent="60" name="track_artist_pkey">
+      <ObjectId>18080</ObjectId>
+      <ColNames>track_id
+artist_id</ColNames>
+      <UnderlyingIndexName>track_artist_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="138" parent="60" name="track_artist_track_id_fkey">
+      <ObjectId>18081</ObjectId>
+      <ColNames>track_id</ColNames>
+      <RefTableId>18031</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>track</RefTableName>
+      <RefKeyName>track_pkey</RefKeyName>
+      <RefColNames>track_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="139" parent="60" name="track_artist_artist_id_fkey">
+      <ObjectId>18086</ObjectId>
+      <ColNames>artist_id</ColNames>
+      <RefTableId>18057</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>artist</RefTableName>
+      <RefKeyName>artist_pkey</RefKeyName>
+      <RefColNames>artist_id</RefColNames>
+    </foreign-key>
+    <column id="140" parent="61" name="track_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1053</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="141" parent="61" name="playlist_id">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1053</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="142" parent="61" name="track_playlist_pkey">
+      <ObjectId>18045</ObjectId>
+      <ColNames>track_id
+playlist_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="143" parent="61" name="track_playlist_pkey">
+      <ObjectId>18046</ObjectId>
+      <ColNames>track_id
+playlist_id</ColNames>
+      <UnderlyingIndexName>track_playlist_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="144" parent="61" name="track_playlist_track_id_fkey">
+      <ObjectId>18047</ObjectId>
+      <ColNames>track_id</ColNames>
+      <RefTableId>18031</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>track</RefTableName>
+      <RefKeyName>track_pkey</RefKeyName>
+      <RefColNames>track_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="145" parent="61" name="track_playlist_playlist_id_fkey">
+      <ObjectId>18052</ObjectId>
+      <ColNames>playlist_id</ColNames>
+      <RefTableId>18023</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>playlist</RefTableName>
+      <RefKeyName>playlist_pkey</RefKeyName>
+      <RefColNames>playlist_id</RefColNames>
+    </foreign-key>
+    <column id="146" parent="62" name="album_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1116</StateNumber>
+    </column>
+    <column id="147" parent="62" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1116</StateNumber>
+    </column>
+    <column id="148" parent="62" name="quant">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>1116</StateNumber>
+    </column>
+    <column id="149" parent="63" name="track_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1115</StateNumber>
+    </column>
+    <column id="150" parent="63" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1115</StateNumber>
+    </column>
+    <column id="151" parent="63" name="track_duration">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>1115</StateNumber>
+    </column>
+    <column id="152" parent="64" name="artist_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1113</StateNumber>
+    </column>
+    <column id="153" parent="64" name="artist_popularity">
+      <Position>2</Position>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>1113</StateNumber>
+    </column>
+    <column id="154" parent="65" name="artist_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1114</StateNumber>
+    </column>
+    <column id="155" parent="65" name="artist_followers">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1114</StateNumber>
+    </column>
+    <column id="156" parent="66" name="track_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1112</StateNumber>
+    </column>
+    <column id="157" parent="66" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1112</StateNumber>
+    </column>
+    <column id="158" parent="66" name="track_popularity">
+      <Position>3</Position>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>1112</StateNumber>
+    </column>
+    <column id="159" parent="67" name="album_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1071</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="160" parent="67" name="album_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1071</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="161" parent="67" name="album_release_date">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1071</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="162" parent="67" name="album_popularity">
+      <Position>4</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1071</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <index id="163" parent="67" name="album_pkey">
+      <ObjectId>18170</ObjectId>
+      <ColNames>album_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="164" parent="67" name="album_pkey">
+      <ObjectId>18171</ObjectId>
+      <ColNames>album_id</ColNames>
+      <UnderlyingIndexName>album_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="165" parent="68" name="artist_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1070</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="166" parent="68" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1070</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="167" parent="68" name="artist_genre">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1070</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="168" parent="68" name="artist_popularity">
+      <Position>4</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1070</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="169" parent="68" name="artist_followers">
+      <Position>5</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1070</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="170" parent="68" name="artist_pkey">
+      <ObjectId>18162</ObjectId>
+      <ColNames>artist_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="171" parent="68" name="artist_artist_name_idx">
+      <ObjectId>18338</ObjectId>
+      <ColNames>artist_name</ColNames>
+    </index>
+    <index id="172" parent="68" name="artist_artist_name_idx1">
+      <ObjectId>18350</ObjectId>
+      <ColNames>artist_name</ColNames>
+    </index>
+    <index id="173" parent="68" name="artist_artist_name_idx2">
+      <ObjectId>18362</ObjectId>
+      <ColNames>artist_name</ColNames>
+    </index>
+    <index id="174" parent="68" name="artist_artist_genre_artist_followers_artist_popularity_idx">
+      <ObjectId>18315</ObjectId>
+      <ColNames>artist_genre
+artist_followers
+artist_popularity</ColNames>
+    </index>
+    <index id="175" parent="68" name="artist_artist_genre_idx">
+      <ObjectId>18324</ObjectId>
+      <ColNames>artist_genre</ColNames>
+    </index>
+    <index id="176" parent="68" name="artist_artist_genre_idx1">
+      <ObjectId>18335</ObjectId>
+      <ColNames>artist_genre</ColNames>
+    </index>
+    <index id="177" parent="68" name="artist_artist_genre_idx2">
+      <ObjectId>18347</ObjectId>
+      <ColNames>artist_genre</ColNames>
+    </index>
+    <index id="178" parent="68" name="artist_artist_genre_idx3">
+      <ObjectId>18359</ObjectId>
+      <ColNames>artist_genre</ColNames>
+    </index>
+    <index id="179" parent="68" name="artist_artist_popularity_idx">
+      <ObjectId>18326</ObjectId>
+      <ColNames>artist_popularity</ColNames>
+    </index>
+    <index id="180" parent="68" name="artist_artist_popularity_idx1">
+      <ObjectId>18337</ObjectId>
+      <ColNames>artist_popularity</ColNames>
+    </index>
+    <index id="181" parent="68" name="artist_artist_popularity_idx2">
+      <ObjectId>18349</ObjectId>
+      <ColNames>artist_popularity</ColNames>
+    </index>
+    <index id="182" parent="68" name="artist_artist_popularity_idx3">
+      <ObjectId>18361</ObjectId>
+      <ColNames>artist_popularity</ColNames>
+    </index>
+    <index id="183" parent="68" name="artist_artist_followers_idx">
+      <ObjectId>18325</ObjectId>
+      <ColNames>artist_followers</ColNames>
+    </index>
+    <index id="184" parent="68" name="artist_artist_followers_idx1">
+      <ObjectId>18336</ObjectId>
+      <ColNames>artist_followers</ColNames>
+    </index>
+    <index id="185" parent="68" name="artist_artist_followers_idx2">
+      <ObjectId>18348</ObjectId>
+      <ColNames>artist_followers</ColNames>
+    </index>
+    <index id="186" parent="68" name="artist_artist_followers_idx3">
+      <ObjectId>18360</ObjectId>
+      <ColNames>artist_followers</ColNames>
+    </index>
+    <key id="187" parent="68" name="artist_pkey">
+      <ObjectId>18163</ObjectId>
+      <ColNames>artist_id</ColNames>
+      <UnderlyingIndexName>artist_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <trigger id="188" parent="68" name="attartistfollowers">
+      <ObjectId>18228</ObjectId>
+      <StateNumber>1097</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18227</CallRoutineId>
+    </trigger>
+    <trigger id="189" parent="68" name="attartistpopularity">
+      <ObjectId>18226</ObjectId>
+      <StateNumber>1095</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18225</CallRoutineId>
+    </trigger>
+    <trigger id="190" parent="68" name="atualiza_artistas_por_genero">
+      <ObjectId>18240</ObjectId>
+      <StateNumber>1109</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18239</CallRoutineId>
+    </trigger>
+    <column id="191" parent="69" name="playlist_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1067</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="192" parent="69" name="playlist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1067</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="193" parent="69" name="playlist_collaborative">
+      <Position>3</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1067</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <index id="194" parent="69" name="playlist_pkey">
+      <ObjectId>18128</ObjectId>
+      <ColNames>playlist_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="195" parent="69" name="playlist_pkey">
+      <ObjectId>18129</ObjectId>
+      <ColNames>playlist_id</ColNames>
+      <UnderlyingIndexName>playlist_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="196" parent="70" name="track_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="197" parent="70" name="track_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="198" parent="70" name="track_liveness">
+      <Position>3</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="199" parent="70" name="track_speechness">
+      <Position>4</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="200" parent="70" name="track_explicit">
+      <Position>5</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="201" parent="70" name="track_tempo">
+      <Position>6</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="202" parent="70" name="track_valence">
+      <Position>7</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="203" parent="70" name="track_popularity">
+      <Position>8</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="204" parent="70" name="track_number">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="205" parent="70" name="track_energy">
+      <Position>10</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="206" parent="70" name="track_acousticness">
+      <Position>11</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="207" parent="70" name="track_instrumentalness">
+      <Position>12</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="208" parent="70" name="track_dancebility">
+      <Position>13</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="209" parent="70" name="track_duration">
+      <Position>14</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1068</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="210" parent="70" name="track_pkey">
+      <ObjectId>18136</ObjectId>
+      <ColNames>track_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="211" parent="70" name="track_track_explicit_idx">
+      <ObjectId>18322</ObjectId>
+      <ColNames>track_explicit</ColNames>
+    </index>
+    <index id="212" parent="70" name="track_track_explicit_idx1">
+      <ObjectId>18333</ObjectId>
+      <ColNames>track_explicit</ColNames>
+    </index>
+    <index id="213" parent="70" name="track_track_explicit_idx2">
+      <ObjectId>18345</ObjectId>
+      <ColNames>track_explicit</ColNames>
+    </index>
+    <index id="214" parent="70" name="track_track_explicit_idx3">
+      <ObjectId>18357</ObjectId>
+      <ColNames>track_explicit</ColNames>
+    </index>
+    <index id="215" parent="70" name="track_track_popularity_track_energy_track_dancebility_track_idx">
+      <ObjectId>18314</ObjectId>
+      <ColNames>track_popularity
+track_energy
+track_dancebility
+track_instrumentalness
+track_duration
+track_popularity</ColNames>
+    </index>
+    <index id="216" parent="70" name="track_track_popularity_idx">
+      <ObjectId>18316</ObjectId>
+      <ColNames>track_popularity</ColNames>
+    </index>
+    <index id="217" parent="70" name="track_track_popularity_idx1">
+      <ObjectId>18321</ObjectId>
+      <ColNames>track_popularity</ColNames>
+    </index>
+    <index id="218" parent="70" name="track_track_popularity_idx2">
+      <ObjectId>18327</ObjectId>
+      <ColNames>track_popularity</ColNames>
+    </index>
+    <index id="219" parent="70" name="track_track_popularity_idx3">
+      <ObjectId>18332</ObjectId>
+      <ColNames>track_popularity</ColNames>
+    </index>
+    <index id="220" parent="70" name="track_track_popularity_idx4">
+      <ObjectId>18339</ObjectId>
+      <ColNames>track_popularity</ColNames>
+    </index>
+    <index id="221" parent="70" name="track_track_popularity_idx5">
+      <ObjectId>18344</ObjectId>
+      <ColNames>track_popularity</ColNames>
+    </index>
+    <index id="222" parent="70" name="track_track_popularity_idx6">
+      <ObjectId>18351</ObjectId>
+      <ColNames>track_popularity</ColNames>
+    </index>
+    <index id="223" parent="70" name="track_track_popularity_idx7">
+      <ObjectId>18356</ObjectId>
+      <ColNames>track_popularity</ColNames>
+    </index>
+    <index id="224" parent="70" name="track_track_energy_idx">
+      <ObjectId>18317</ObjectId>
+      <ColNames>track_energy</ColNames>
+    </index>
+    <index id="225" parent="70" name="track_track_energy_idx1">
+      <ObjectId>18328</ObjectId>
+      <ColNames>track_energy</ColNames>
+    </index>
+    <index id="226" parent="70" name="track_track_energy_idx2">
+      <ObjectId>18340</ObjectId>
+      <ColNames>track_energy</ColNames>
+    </index>
+    <index id="227" parent="70" name="track_track_energy_idx3">
+      <ObjectId>18352</ObjectId>
+      <ColNames>track_energy</ColNames>
+    </index>
+    <index id="228" parent="70" name="track_track_acousticness_idx">
+      <ObjectId>18323</ObjectId>
+      <ColNames>track_acousticness</ColNames>
+    </index>
+    <index id="229" parent="70" name="track_track_acousticness_idx1">
+      <ObjectId>18334</ObjectId>
+      <ColNames>track_acousticness</ColNames>
+    </index>
+    <index id="230" parent="70" name="track_track_acousticness_idx2">
+      <ObjectId>18346</ObjectId>
+      <ColNames>track_acousticness</ColNames>
+    </index>
+    <index id="231" parent="70" name="track_track_acousticness_idx3">
+      <ObjectId>18358</ObjectId>
+      <ColNames>track_acousticness</ColNames>
+    </index>
+    <index id="232" parent="70" name="track_track_instrumentalness_idx">
+      <ObjectId>18319</ObjectId>
+      <ColNames>track_instrumentalness</ColNames>
+    </index>
+    <index id="233" parent="70" name="track_track_instrumentalness_idx1">
+      <ObjectId>18330</ObjectId>
+      <ColNames>track_instrumentalness</ColNames>
+    </index>
+    <index id="234" parent="70" name="track_track_instrumentalness_idx2">
+      <ObjectId>18342</ObjectId>
+      <ColNames>track_instrumentalness</ColNames>
+    </index>
+    <index id="235" parent="70" name="track_track_instrumentalness_idx3">
+      <ObjectId>18354</ObjectId>
+      <ColNames>track_instrumentalness</ColNames>
+    </index>
+    <index id="236" parent="70" name="track_track_dancebility_idx">
+      <ObjectId>18318</ObjectId>
+      <ColNames>track_dancebility</ColNames>
+    </index>
+    <index id="237" parent="70" name="track_track_dancebility_idx1">
+      <ObjectId>18329</ObjectId>
+      <ColNames>track_dancebility</ColNames>
+    </index>
+    <index id="238" parent="70" name="track_track_dancebility_idx2">
+      <ObjectId>18341</ObjectId>
+      <ColNames>track_dancebility</ColNames>
+    </index>
+    <index id="239" parent="70" name="track_track_dancebility_idx3">
+      <ObjectId>18353</ObjectId>
+      <ColNames>track_dancebility</ColNames>
+    </index>
+    <index id="240" parent="70" name="track_track_duration_idx">
+      <ObjectId>18320</ObjectId>
+      <ColNames>track_duration</ColNames>
+    </index>
+    <index id="241" parent="70" name="track_track_duration_idx1">
+      <ObjectId>18331</ObjectId>
+      <ColNames>track_duration</ColNames>
+    </index>
+    <index id="242" parent="70" name="track_track_duration_idx2">
+      <ObjectId>18343</ObjectId>
+      <ColNames>track_duration</ColNames>
+    </index>
+    <index id="243" parent="70" name="track_track_duration_idx3">
+      <ObjectId>18355</ObjectId>
+      <ColNames>track_duration</ColNames>
+    </index>
+    <key id="244" parent="70" name="track_pkey">
+      <ObjectId>18137</ObjectId>
+      <ColNames>track_id</ColNames>
+      <UnderlyingIndexName>track_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <trigger id="245" parent="70" name="atttrackpopularity">
+      <ObjectId>18223</ObjectId>
+      <StateNumber>1091</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18222</CallRoutineId>
+    </trigger>
+    <trigger id="246" parent="70" name="atualiza_top_albuns_explicit">
+      <ObjectId>18232</ObjectId>
+      <StateNumber>1101</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18231</CallRoutineId>
+    </trigger>
+    <trigger id="247" parent="70" name="atualiza_top_musicas_instrumentais">
+      <ObjectId>18242</ObjectId>
+      <StateNumber>1111</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18241</CallRoutineId>
+    </trigger>
+    <trigger id="248" parent="70" name="atualiza_top_musicas_longas">
+      <ObjectId>18230</ObjectId>
+      <StateNumber>1099</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18229</CallRoutineId>
+    </trigger>
+    <trigger id="249" parent="70" name="trigger_album_acustico_popularidade">
+      <ObjectId>18238</ObjectId>
+      <StateNumber>1107</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18237</CallRoutineId>
+    </trigger>
+    <trigger id="250" parent="70" name="trigger_albuns_energeticos">
+      <ObjectId>18236</ObjectId>
+      <StateNumber>1105</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18235</CallRoutineId>
+    </trigger>
+    <trigger id="251" parent="70" name="trigger_artistas_dancantes">
+      <ObjectId>18234</ObjectId>
+      <StateNumber>1103</StateNumber>
+      <Turn>after-stmt</Turn>
+      <Events>IUD</Events>
+      <FireMode>origin</FireMode>
+      <CallRoutineId>18233</CallRoutineId>
+    </trigger>
+    <column id="252" parent="71" name="track_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1073</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="253" parent="71" name="album_id">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1073</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="254" parent="71" name="track_album_pkey">
+      <ObjectId>18196</ObjectId>
+      <ColNames>track_id
+album_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="255" parent="71" name="track_album_pkey">
+      <ObjectId>18197</ObjectId>
+      <ColNames>track_id
+album_id</ColNames>
+      <UnderlyingIndexName>track_album_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="256" parent="71" name="track_album_track_id_fkey">
+      <ObjectId>18198</ObjectId>
+      <ColNames>track_id</ColNames>
+      <RefTableId>18130</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>track</RefTableName>
+      <RefKeyName>track_pkey</RefKeyName>
+      <RefColNames>track_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="257" parent="71" name="track_album_album_id_fkey">
+      <ObjectId>18203</ObjectId>
+      <ColNames>album_id</ColNames>
+      <RefTableId>18164</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>album</RefTableName>
+      <RefKeyName>album_pkey</RefKeyName>
+      <RefColNames>album_id</RefColNames>
+    </foreign-key>
+    <column id="258" parent="72" name="track_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1072</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="259" parent="72" name="artist_id">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1072</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="260" parent="72" name="track_artist_pkey">
+      <ObjectId>18178</ObjectId>
+      <ColNames>track_id
+artist_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="261" parent="72" name="track_artist_pkey">
+      <ObjectId>18179</ObjectId>
+      <ColNames>track_id
+artist_id</ColNames>
+      <UnderlyingIndexName>track_artist_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="262" parent="72" name="track_artist_track_id_fkey">
+      <ObjectId>18180</ObjectId>
+      <ColNames>track_id</ColNames>
+      <RefTableId>18130</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>track</RefTableName>
+      <RefKeyName>track_pkey</RefKeyName>
+      <RefColNames>track_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="263" parent="72" name="track_artist_artist_id_fkey">
+      <ObjectId>18185</ObjectId>
+      <ColNames>artist_id</ColNames>
+      <RefTableId>18156</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>artist</RefTableName>
+      <RefKeyName>artist_pkey</RefKeyName>
+      <RefColNames>artist_id</RefColNames>
+    </foreign-key>
+    <column id="264" parent="73" name="track_id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1069</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="265" parent="73" name="playlist_id">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1069</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="266" parent="73" name="track_playlist_pkey">
+      <ObjectId>18144</ObjectId>
+      <ColNames>track_id
+playlist_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="267" parent="73" name="track_playlist_pkey">
+      <ObjectId>18145</ObjectId>
+      <ColNames>track_id
+playlist_id</ColNames>
+      <UnderlyingIndexName>track_playlist_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="268" parent="73" name="track_playlist_track_id_fkey">
+      <ObjectId>18146</ObjectId>
+      <ColNames>track_id</ColNames>
+      <RefTableId>18130</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>track</RefTableName>
+      <RefKeyName>track_pkey</RefKeyName>
+      <RefColNames>track_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="269" parent="73" name="track_playlist_playlist_id_fkey">
+      <ObjectId>18151</ObjectId>
+      <ColNames>playlist_id</ColNames>
+      <RefTableId>18122</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>playlist</RefTableName>
+      <RefKeyName>playlist_pkey</RefKeyName>
+      <RefColNames>playlist_id</RefColNames>
+    </foreign-key>
+    <column id="270" parent="74" name="album_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1125</StateNumber>
+    </column>
+    <column id="271" parent="74" name="track_popularity">
+      <Position>2</Position>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>1125</StateNumber>
+    </column>
+    <column id="272" parent="75" name="album_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1124</StateNumber>
+    </column>
+    <column id="273" parent="75" name="track_energy">
+      <Position>2</Position>
+      <DataType>double precision|0s</DataType>
+      <StateNumber>1124</StateNumber>
+    </column>
+    <column id="274" parent="76" name="album_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1117</StateNumber>
+    </column>
+    <column id="275" parent="76" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1117</StateNumber>
+    </column>
+    <column id="276" parent="76" name="quant">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>1117</StateNumber>
+    </column>
+    <column id="277" parent="77" name="artist_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1123</StateNumber>
+    </column>
+    <column id="278" parent="77" name="track_dancebility">
+      <Position>2</Position>
+      <DataType>double precision|0s</DataType>
+      <StateNumber>1123</StateNumber>
+    </column>
+    <column id="279" parent="78" name="quant">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>1126</StateNumber>
+    </column>
+    <column id="280" parent="78" name="artist_genre">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1126</StateNumber>
+    </column>
+    <column id="281" parent="79" name="track_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1127</StateNumber>
+    </column>
+    <column id="282" parent="79" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1127</StateNumber>
+    </column>
+    <column id="283" parent="79" name="track_instrumentalness">
+      <Position>3</Position>
+      <DataType>double precision|0s</DataType>
+      <StateNumber>1127</StateNumber>
+    </column>
+    <column id="284" parent="80" name="track_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1121</StateNumber>
+    </column>
+    <column id="285" parent="80" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1121</StateNumber>
+    </column>
+    <column id="286" parent="80" name="track_duration">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>1121</StateNumber>
+    </column>
+    <column id="287" parent="81" name="artist_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1119</StateNumber>
+    </column>
+    <column id="288" parent="81" name="artist_popularity">
+      <Position>2</Position>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>1119</StateNumber>
+    </column>
+    <column id="289" parent="82" name="artist_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1120</StateNumber>
+    </column>
+    <column id="290" parent="82" name="artist_followers">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1120</StateNumber>
+    </column>
+    <column id="291" parent="83" name="track_name">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1118</StateNumber>
+    </column>
+    <column id="292" parent="83" name="artist_name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1118</StateNumber>
+    </column>
+    <column id="293" parent="83" name="track_popularity">
+      <Position>3</Position>
+      <DataType>smallint|0s</DataType>
+      <StateNumber>1118</StateNumber>
+    </column>
+    <argument id="294" parent="84">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="295" parent="85">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="296" parent="86">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="297" parent="87">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="298" parent="88">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="299" parent="89">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="300" parent="90">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="301" parent="91">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="302" parent="92">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+    <argument id="303" parent="93">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>trigger|0s</DataType>
+    </argument>
+  </database-model>
+</dataSource>
