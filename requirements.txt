@@ -1,0 +1,2 @@
+spotipy==2.4.4
+psycopg2==2.7.5
