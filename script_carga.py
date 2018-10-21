@@ -27,6 +27,7 @@ Mtrack_album = []
 Mplaylist = []
 Mtrack = []
 Mtrack_popularity = []
+Martist_popularity = []
 
 # Listas de ids das tabelas para verificacao de ids ja existentes no banco
 lista_id_album = []
@@ -37,6 +38,8 @@ lista_id_track_artist = []
 lista_id_track_playlist = []
 lista_id_track_album = []
 lista_id_track_popularity = []
+lista_id_artist_popularity = []
+
 ########################################################################################################################
 
 # Entradas do usuario para conexao com o banco
@@ -83,6 +86,14 @@ sql = 'select * from spotify_db.track_album'
 cur.execute(sql)
 lista_id_track_album = cur.fetchall()
 
+sql = 'select track_id, data_popularidade from spotify_db.track_popularity'
+cur.execute(sql)
+lista_id_track_popularity = cur.fetchall()
+
+sql = 'select artist_id, data_popularidade from spotify_db.artist_popularity'
+cur.execute(sql)
+lista_id_artist_popularity = cur.fetchall()
+
 ########################################################################################################################
 # Obtencao de dados pelas API e tratamento dos mesmos
 
@@ -94,7 +105,7 @@ if token:
     playlist_name = category['playlists']['items']
 
     # for playlist_index in playlist_name:
-    for playlist_index in playlist_name[:2]:
+    for playlist_index in playlist_name[1:2]:
         playlist_id = playlist_index['id']
         playlist_name = playlist_index['name']
         playlist_collaborative = playlist_index['collaborative']
@@ -120,10 +131,6 @@ if token:
                 track_explicit = track_index['track']['explicit']
                 track_popularity = track_index['track']['popularity']
                 track_number = track_index['track']['track_number']
-
-                if (track_id, track_popularity) not in lista_id_track_popularity:
-                    lista_id_track_popularity.append((track_id, track_popularity))
-                    Mtrack_popularity.append((track_id, dt.datetime.today(), track_popularity))
 
                 # Extrai informacoes de um album
                 album_id = track_index['track']['album']['id']
@@ -155,9 +162,13 @@ if token:
 
                 # Insere artista na lista de tuplas
                 if (artist_id,) not in lista_id_artist:
-                    Martist.append((artist_id, artist_name, artist_genre, artist_popularity,artist_followers))
+                    Martist.append((artist_id, artist_name, artist_genre, artist_followers))
                     lista_id_artist.append((artist_id,))
-                    print(artist_id, artist_name, artist_popularity, artist_genre, artist_followers)
+                    print(artist_id, artist_name, artist_genre, artist_followers)
+
+                if (artist_id, dt.date.today()) not in lista_id_artist_popularity:
+                    lista_id_artist_popularity.append((artist_id, dt.date.today()))
+                    Martist_popularity.append((artist_id, dt.date.today(), artist_popularity))
 
 
                 # Extrai features de uma track
@@ -199,6 +210,10 @@ if token:
                             print(track_id,track_name,track_liveness, track_speechiness, track_explicit,
                                            track_tempo,track_valence, track_number, track_energy,
                                            track_acousticness,track_instrumentalness, track_danceability, track_duration)
+
+                        if (track_id, dt.date.today()) not in lista_id_track_popularity:
+                            lista_id_track_popularity.append((track_id, dt.date.today()))
+                            Mtrack_popularity.append((track_id, dt.date.today(), track_popularity))
 else:
     print ("Can't get token")
 
@@ -208,7 +223,7 @@ for item in Mplaylist:
 for item in Mtrack:
     cur.execute('insert into spotify_db.track values (%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s)', item)
 for item in Martist:
-    cur.execute('insert into spotify_db.artist values (%s, %s,%s,%s,%s)', item)
+    cur.execute('insert into spotify_db.artist values (%s, %s,%s,%s)', item)
 for item in Malbum:
     cur.execute('insert into spotify_db.album values (%s, %s,%s,%s)', item)
 for item in Mtrack_artist:
@@ -219,7 +234,8 @@ for item in Mtrack_album:
     cur.execute('insert into spotify_db.track_album values (%s, %s)', item)
 for item in Mtrack_popularity:
     cur.execute('insert into spotify_db.track_popularity values (%s, %s, %s)', item)
-
+for item in Martist_popularity:
+    cur.execute('insert into spotify_db.artist_popularity values (%s, %s, %s)', item)
 con.commit()
 
 # Fecha conexoes com o banco
