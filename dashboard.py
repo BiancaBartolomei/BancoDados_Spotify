@@ -38,9 +38,18 @@ def update_dropdown_genre():
             generos.append(genre)
     return opt_genre
 
+def update_dropdown_track():
+    musicas = []
+    opt_track = []
+    for track in df['track_name']:
 
+        if track not in musicas and track is not None:
+            a = {'label':track, 'value':track}
+            opt_track.append(a)
+            musicas.append(track)
+    return opt_track
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets = ['https://code.getmdl.io/1.3.0/material.indigo-pink.min.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
@@ -48,7 +57,12 @@ server = app.server
 app.title = "Spotify Popularidades Database"
 
 app.layout = html.Div(children=[
-    html.H1(children='Spotify Popularidades Database'),
+    html.H1(children='Spotify Popularidades Database',
+            style={
+                'textAlign': 'center',
+
+            }
+            , className='mdl-layout mdl-js-layout mdl-layout--fixed-header'),
 
     html.Div(children='''
         Top 10
@@ -61,7 +75,8 @@ app.layout = html.Div(children=[
                     {'x': df['track_name'], 'y': df['track_popularity'], 'type': 'bar'},
                 ],
                 'layout': {
-                    'title': 'Dash Data Visualization'
+                    'title': 'Popularidade de músicas por dia',
+                    'yaxis': {'title': 'Popularidade'}
                 }
             }
         ),
@@ -92,8 +107,34 @@ app.layout = html.Div(children=[
                 value=""
             )
         ], className='six columns'),
-    ], className='row')
+    ], className='mdl-card--border'),
 
+
+    html.Div([
+        dcc.Graph(
+            id='popularidade_musica',
+            figure={
+                'data': [
+                    {'x': df['data_popularidade'], 'y': df['track_popularity'], 'type': 'lines'},
+                ],
+                'layout': {
+                    'title': 'Popularidade de uma música ao longo do tempo',
+                    'xaxis': {'title': 'Data'},
+                    'yaxis': {'title': 'Popularidade'}
+                }
+            }
+        ),
+        html.Div([
+            html.H3(children='Musica'),
+            dcc.Dropdown(
+                id='dropdown-music',
+                options=update_dropdown_track(),
+                multi=False,
+                value=""
+            )
+        ], className='six columns'),
+
+        ], className='row')
 ])
 
 
@@ -133,10 +174,43 @@ def update_figure(date, genre_input, artist_input):
     return {
         'data': traces,
         'layout': {
-                'title': 'Dash Data Visualization'
+                'title': 'Popularidade de músicas por dia',
+                'yaxis': {'title': 'Popularidade'}
         }
     }
 
+@app.callback(
+    dash.dependencies.Output('popularidade_musica','figure'),
+    [dash.dependencies.Input('dropdown-music','value')])
+def update_figure(track_input):
+    filtro = pd.DataFrame(columns=['track_name','artist_name','track_popularity','data_popularidade','artist_genre'])
+    temp = df
+
+
+    if track_input:
+        temp = temp.loc[df['track_name'] == track_input]
+
+        filtro = temp
+    else:
+        filtro = pd.DataFrame(columns=['track_name','artist_name','track_popularity','data_popularidade','artist_genre'])
+
+
+
+    traces = []
+
+    traces.append(go.Line(
+        x=filtro['data_popularidade'],
+        y=filtro['track_popularity'],
+    ))
+
+    return {
+        'data': traces,
+        'layout': {
+                'title': 'Popularidade de uma música ao longo do tempo',
+                'xaxis': {'title': 'Data'},
+                'yaxis': {'title': 'Popularidade'}
+        }
+    }
 
 if __name__ == '__main__':
     app.run_server(debug=True)
