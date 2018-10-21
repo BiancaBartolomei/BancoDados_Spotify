@@ -15,8 +15,30 @@ engine = create_engine('postgres://bdxulnbxczgzlx:41d56d0522876a442b7494fa56070a
 
 df = pd.read_sql_query('select * from spotify_db.top_musicas_populares',con=engine)
 print(df)
-opt_artist = []
-opt_genre = []
+
+def update_dropdown_artist():
+    opt_artist = []
+    artistas = []
+    for artist in df['artist_name']:
+
+        if artist not in artistas:
+            a = {'label':artist, 'value':artist}
+            opt_artist.append(a)
+            artistas.append(artist)
+    return opt_artist
+
+def update_dropdown_genre():
+    generos = []
+    opt_genre = []
+    for genre in df['artist_genre']:
+
+        if genre not in generos and genre is not None:
+            a = {'label':genre, 'value':genre}
+            opt_genre.append(a)
+            generos.append(genre)
+    return opt_genre
+
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -55,7 +77,7 @@ app.layout = html.Div(children=[
             html.H3(children='Filtro por genero'),
             dcc.Dropdown(
                 id='dropdown-genre',
-                options= opt_genre,
+                options= update_dropdown_genre(),
                 multi=True,
                 value=""
             ),
@@ -65,7 +87,7 @@ app.layout = html.Div(children=[
             html.H3(children='Filtro por artista'),
             dcc.Dropdown(
                 id='dropdown-artist',
-                options= opt_artist,
+                options= update_dropdown_artist(),
                 multi=True,
                 value=""
             )
@@ -117,20 +139,4 @@ def update_figure(date, genre_input, artist_input):
 
 
 if __name__ == '__main__':
-    artistas = []
-    generos = []
-    for artist in df['artist_name']:
-
-        if artist not in artistas:
-            a = {'label':artist, 'value':artist}
-            opt_artist.append(a)
-            artistas.append(artist)
-
-    for genre in df['artist_genre']:
-
-        if genre not in generos and genre is not None:
-            a = {'label':genre, 'value':genre}
-            opt_genre.append(a)
-            generos.append(genre)
-
     app.run_server(debug=True)
