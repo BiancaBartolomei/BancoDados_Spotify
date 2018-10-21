@@ -8,6 +8,8 @@ import plotly.graph_objs as go
 from sqlalchemy import create_engine
 from datetime import datetime as dt
 
+
+
 engine = create_engine('postgres://bdxulnbxczgzlx:41d56d0522876a442b7494fa56070a4993b34868812d14d5f93debd7a98fde6b@ec2-'
                        '184-72-234-230.compute-1.amazonaws.com:5432/d9vbm9b8oufhkq')
 
@@ -19,6 +21,7 @@ opt_genre = []
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 
 app.title = "Spotify Popularidades Database"
 

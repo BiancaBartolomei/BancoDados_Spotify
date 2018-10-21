@@ -1,1 +1,1 @@
-web: python dashboard.py $PORT
+web: gunicorn dashboard:server

@@ -5,4 +5,5 @@ dash-renderer==0.14.3
 spotipy==2.4.4
 SQLAlchemy==1.2.9
 psycopg2==2.7.5
-pandas==0.23.1 
+pandas==0.23.1
+gunicorn==19.9.0
