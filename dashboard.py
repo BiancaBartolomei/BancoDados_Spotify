@@ -6,7 +6,7 @@ import dash_html_components as html
 import pandas as pd
 import plotly.graph_objs as go
 from sqlalchemy import create_engine
-from datetime import datetime as dt
+from datetime import date as dt
 
 
 
@@ -69,7 +69,7 @@ app.layout = html.Div(children=[
             html.H3(children='Filtro por data'),
             dcc.DatePickerSingle(
                 id='date-picker-single',
-                date=dt.now()
+                date=dt.today()
             )
         ], className='six columns'),
 
