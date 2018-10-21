@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="spotify_db_02_10@localhost" uuid="f3f41479-5c9b-4702-a6c2-bcff8d605ec5">
+      <database-info product="PostgreSQL" version="10.5 (Ubuntu 10.5-0ubuntu0.18.04)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2" family="POSTGRES" exact-version="10.5">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>luismalta</user-name>
+      <introspection-schemas>@:@|spotify_db_02_10:spotify_db|spotify_db_03_10:spotify_db</introspection-schemas>
+    </data-source>
+  </component>
+</project>
