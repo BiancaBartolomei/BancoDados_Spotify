@@ -49,7 +49,7 @@ def update_dropdown_track():
             musicas.append(track)
     return opt_track
 
-external_stylesheets = ['https://code.getmdl.io/1.3.0/material.indigo-pink.min.css']
+external_stylesheets = ['https://raw.githubusercontent.com/BiancaBartolomei/BDII_API_Spotify/css/assets/style.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
@@ -62,53 +62,57 @@ app.layout = html.Div(children=[
                 'textAlign': 'center',
 
             }
-            , className='mdl-layout mdl-js-layout mdl-layout--fixed-header'),
+            , className=''),
 
-    html.Div(children='''
-        Top 10
-    '''),
+
     html.Div([
-        dcc.Graph(
-            id='musicas_populares',
-            figure={
-                'data': [
-                    {'x': df['track_name'], 'y': df['track_popularity'], 'type': 'bar'},
-                ],
-                'layout': {
-                    'title': 'Popularidade de músicas por dia',
-                    'yaxis': {'title': 'Popularidade'}
-                }
-            }
-        ),
         html.Div([
-            html.H3(children='Filtro por data'),
-            dcc.DatePickerSingle(
-                id='date-picker-single',
-                date=dt.today()
-            )
-        ], className='six columns'),
+            html.Div([
+                dcc.Graph(
+                    id='musicas_populares',
+                    figure={
+                        'data': [
+                            {'x': df['track_name'], 'y': df['track_popularity'], 'type': 'bar'},
+                        ],
+                        'layout': {
+                            'title': 'Popularidade de músicas por dia',
+                            'yaxis': {'title': 'Popularidade'}
+                        }
+                    }
+                ),
+            ], className='mdl-cell mdl-cell--10-col'),
 
-        html.Div([
-            html.H3(children='Filtro por genero'),
-            dcc.Dropdown(
-                id='dropdown-genre',
-                options= update_dropdown_genre(),
-                multi=True,
-                value=""
-            ),
-        ], className='six columns'),
+            html.Div([
+                html.Div([
+                    html.H3(children='Filtro por data'),
+                    dcc.DatePickerSingle(
+                        id='date-picker-single',
+                        date=dt.today()
+                    )
+                ], className=''),
 
-        html.Div([
-            html.H3(children='Filtro por artista'),
-            dcc.Dropdown(
-                id='dropdown-artist',
-                options= update_dropdown_artist(),
-                multi=True,
-                value=""
-            )
-        ], className='six columns'),
-    ], className='mdl-card--border'),
+                html.Div([
+                    html.H3(children='Filtro por genero'),
+                    dcc.Dropdown(
+                        id='dropdown-genre',
+                        options= update_dropdown_genre(),
+                        multi=True,
+                        value=""
+                    ),
+                ], className=''),
 
+                html.Div([
+                    html.H3(children='Filtro por artista'),
+                    dcc.Dropdown(
+                        id='dropdown-artist',
+                        options= update_dropdown_artist(),
+                        multi=True,
+                        value=""
+                    )
+                ], className=''),
+            ], className='mdl-cell mdl-cell--2-col'),
+        ], className='mdl-grid'),
+    ], className='card-teste'),
 
     html.Div([
         dcc.Graph(
