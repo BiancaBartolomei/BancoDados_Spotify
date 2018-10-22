@@ -3166,8 +3166,8 @@ input.mdl-button[type="submit"] {
     background: #fff;
     border-radius: 2px;
     box-sizing: border-box;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .mdl-card__media {
