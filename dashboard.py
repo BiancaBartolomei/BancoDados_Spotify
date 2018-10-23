@@ -57,14 +57,19 @@ server = app.server
 app.title = "SPOTIFY POPULARITY DATABASE"
 
 app.layout = html.Div(children=[
-    html.H1(children='Spotify Popularity Database',
-            style={
-                'textAlign': 'center',
-                'color' : 'white',
-                'font-weight': 'bold'
+    html.Header([
+        html.H1(children='Spotify Popularity Database',
+                style={
+                    'textAlign': 'center',
+                    'color': 'white',
+                    'font-weight': 'bold',
+                    'magin-top' : 10,
+                    'magin-bottom' : 10,
 
-            }
-            , className=''),
+                }
+                , className=''),
+    ],className='mdl-layout__header'),
+
 
 
     html.Div([
@@ -173,7 +178,7 @@ app.layout = html.Div(children=[
 
         ], className='mdl-grid'),
     ], className='card-teste'),
-])
+], className='mdl-layout mdl-js-layout mdl-layout--fixed-header')
 
 
 @app.callback(

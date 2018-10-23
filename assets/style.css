@@ -4771,7 +4771,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,.md
     min-height: 64px;
     max-height: 1000px;
     z-index: 3;
-    background-color: rgb(63,81,181);
+    background-color: rgb(43,78,114);
     color: rgb(255,255,255);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
     transition-duration: .2s;
@@ -7685,5 +7685,6 @@ iframe.heightSet {
     border-radius: 5px; /* 5px rounded corners */
     margin-left: 150px;
     margin-right: 150px;
-    margin-bottom: 75px;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
