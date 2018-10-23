@@ -51,15 +51,17 @@ def update_dropdown_track():
 
 external_stylesheets = ['https://raw.githubusercontent.com/BiancaBartolomei/BDII_API_Spotify/css/assets/style.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__)
 server = app.server
 
-app.title = "Spotify Popularidades Database"
+app.title = "SPOTIFY POPULARITY DATABASE"
 
 app.layout = html.Div(children=[
-    html.H1(children='Spotify Popularidades Database',
+    html.H1(children='Spotify Popularity Database',
             style={
                 'textAlign': 'center',
+                'color' : 'white',
+                'font-weight': 'bold'
 
             }
             , className=''),
@@ -67,6 +69,14 @@ app.layout = html.Div(children=[
 
     html.Div([
         html.Div([
+            html.H4(children='Popularidade das músicas em uma data',
+            style={
+                'textAlign': 'center',
+                'font-weight': 'bold',
+                'margin-left' : 50,
+
+            }
+            , className=''),
             html.Div([
                 dcc.Graph(
                     id='musicas_populares',
@@ -75,7 +85,6 @@ app.layout = html.Div(children=[
                             {'x': df['track_name'], 'y': df['track_popularity'], 'type': 'bar'},
                         ],
                         'layout': {
-                            'title': 'Popularidade de músicas por dia',
                             'yaxis': {'title': 'Popularidade'}
                         }
                     }
@@ -83,8 +92,17 @@ app.layout = html.Div(children=[
             ], className='mdl-cell mdl-cell--10-col'),
 
             html.Div([
+                html.H4(
+                    children='FILTROS',
+                        style={
+                        'textAlign': 'center',
+                        'font-weight': 'bold',
+
+                        }
+                    , className=''
+                ),
                 html.Div([
-                    html.H3(children='Filtro por data'),
+                    html.H5(children='Data'),
                     dcc.DatePickerSingle(
                         id='date-picker-single',
                         date=dt.today()
@@ -92,7 +110,7 @@ app.layout = html.Div(children=[
                 ], className=''),
 
                 html.Div([
-                    html.H3(children='Filtro por genero'),
+                    html.H5(children='Gênero'),
                     dcc.Dropdown(
                         id='dropdown-genre',
                         options= update_dropdown_genre(),
@@ -102,7 +120,7 @@ app.layout = html.Div(children=[
                 ], className=''),
 
                 html.Div([
-                    html.H3(children='Filtro por artista'),
+                    html.H5(children='Artista'),
                     dcc.Dropdown(
                         id='dropdown-artist',
                         options= update_dropdown_artist(),
@@ -115,30 +133,46 @@ app.layout = html.Div(children=[
     ], className='card-teste'),
 
     html.Div([
-        dcc.Graph(
-            id='popularidade_musica',
-            figure={
-                'data': [
-                    {'x': df['data_popularidade'], 'y': df['track_popularity'], 'type': 'lines'},
-                ],
-                'layout': {
-                    'title': 'Popularidade de uma música ao longo do tempo',
-                    'xaxis': {'title': 'Data'},
-                    'yaxis': {'title': 'Popularidade'}
-                }
-            }
-        ),
         html.Div([
-            html.H3(children='Musica'),
-            dcc.Dropdown(
-                id='dropdown-music',
-                options=update_dropdown_track(),
-                multi=False,
-                value=""
-            )
-        ], className='six columns'),
+            html.H4(children='Popularidade de uma música ao longo do tempo',
+            style={
+                'textAlign': 'center',
+                'font-weight': 'bold',
+                'margin-left' : 50,
 
-        ], className='row')
+            }
+            , className=''),
+            html.Div([
+                dcc.Graph(
+                    id='popularidade_musica',
+                    figure={
+                        'data': [
+                            {'x': df['data_popularidade'], 'y': df['track_popularity'], 'type': 'lines'},
+                        ],
+                        'layout': {
+                            'xaxis': {'title': 'Data'},
+                            'yaxis': {'title': 'Popularidade'}
+                        }
+                    }
+                ),
+            ], className='mdl-cell mdl-cell--10-col'),
+            html.Div([
+                html.H4(children='Músicas',
+                        style={
+                        'font-weight': 'bold',
+
+                        }
+                    , className=''),
+                dcc.Dropdown(
+                    id='dropdown-music',
+                    options=update_dropdown_track(),
+                    multi=False,
+                    value=""
+                )
+            ], className='mdl-cell mdl-cell--2-col'),
+
+        ], className='mdl-grid'),
+    ], className='card-teste'),
 ])
 
 
@@ -173,13 +207,15 @@ def update_figure(date, genre_input, artist_input):
     traces.append(go.Bar(
         x=filtro['track_name'],
         y=filtro['track_popularity'],
+        marker=dict(
+            color='rgba(39,144,176,1)',
+        )
     ))
 
     return {
         'data': traces,
         'layout': {
-                'title': 'Popularidade de músicas por dia',
-                'yaxis': {'title': 'Popularidade'}
+                'yaxis': {'title': 'Popularidade'},
         }
     }
 
@@ -205,14 +241,17 @@ def update_figure(track_input):
     traces.append(go.Line(
         x=filtro['data_popularidade'],
         y=filtro['track_popularity'],
+        marker=dict(
+            color='rgba(39,144,176,1)',
+        )
     ))
 
     return {
         'data': traces,
         'layout': {
-                'title': 'Popularidade de uma música ao longo do tempo',
                 'xaxis': {'title': 'Data'},
                 'yaxis': {'title': 'Popularidade'}
+
         }
     }
 

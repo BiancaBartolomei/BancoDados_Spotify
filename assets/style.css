@@ -6,7 +6,7 @@
  * @link https://github.com/google/material-design-lite
  */
 @charset "UTF-8";html {
-    color: rgba(0,0,0,.87)
+    color: rgb(43,78,114);
 }
 
 ::-moz-selection {
@@ -165,7 +165,8 @@ html,body {
     font-family: "Helvetica","Arial",sans-serif;
     font-size: 14px;
     font-weight: 400;
-    line-height: 20px
+    background-color: rgb(78,77,74);
+    line-height: 20px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -6758,7 +6759,8 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,.mdl-textfield.is-disabl
     margin: 0 auto;
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
-    align-items: stretch
+    align-items: stretch;
+    border-radius: 10px;
 }
 
 .mdl-grid.mdl-grid--no-spacing {
@@ -7327,7 +7329,8 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,.mdl-textfield.is-disabl
 
 @media (min-width: 840px) {
     .mdl-grid {
-        padding:8px
+        padding:8px;
+        background:  rgb(255,255,255);
     }
 
     .mdl-cell {
@@ -7677,7 +7680,7 @@ iframe.heightSet {
     border: 1px solid rgba(0,0,0,.5)
 }
 .card-teste{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 10px 15px 0 rgba(0,0,0,0.6);
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
     margin-left: 150px;
